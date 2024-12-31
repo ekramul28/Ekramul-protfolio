@@ -68,14 +68,14 @@
 }
 
 body.dark {
-  --background: #1a202c; /* Dark mode background */
+  --background: #000000; /* Dark mode background */
   --foreground: #f7fafc; /* Dark mode text color */
   color: white;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }

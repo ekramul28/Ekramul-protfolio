@@ -7,6 +7,7 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    darkMode: "class",
     extend: {
       fontFamily: {
         sans: ["Poppins", "sans-serif"], // Adding Poppins as the default sans font

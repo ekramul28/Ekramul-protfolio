@@ -1,7 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaMoon, FaSun, FaBars } from "react-icons/fa";
+import { FaMoon, FaBars } from "react-icons/fa";
+import { IoSunnyOutline } from "react-icons/io5";
+import Container from "../container/Container";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,74 +27,85 @@ const Navbar: React.FC = () => {
 
   // Define the navigation links
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#qualification", label: "Qualification" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact-me", label: "Contact Me" },
-    { href: "#blog", label: "Blog" },
+    { href: "home", label: "Home" },
+    { href: "about", label: "About" },
+    { href: "skills", label: "Skills" },
+    { href: "qualification", label: "Qualification" },
+    { href: "projects", label: "Projects" },
+    { href: "contact-me", label: "Contact Me" },
+    { href: "blog", label: "Blog" },
   ];
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <header className="w-full   py-4">
-      <div className=" px-4 flex items-center justify-between">
-        {/* Logo/Brand */}
-        <div className="text-2xl font-bold">
-          <Link href="/">Ekramul Portfolio</Link>
+    <header
+      className={`w-full py-4 fixed top-0 left-0 mx-auto ${
+        isDarkMode ? "bg-black" : "bg-[#f7f7f7]"
+      }    z-50`}
+    >
+      <Container>
+        <div className="px-4 flex items-center justify-between">
+          {/* Logo/Brand */}
+          <div className="text-2xl font-bold">
+            <Link href="/">Ekramul Portfolio</Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button onClick={toggleMenu} className="text-white">
+              <FaBars className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Dark Mode Toggle Button */}
+          <div className="flex gap-2 justify-center items-center">
+            <nav
+              className={`md:flex space-x-6 ${isMenuOpen ? "block" : "hidden"}`}
+            >
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className="hover:text-blue-500"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </nav>
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-md hover:text-blue-500"
+            >
+              {isDarkMode ? (
+                <IoSunnyOutline className="w-6 h-6" />
+              ) : (
+                <FaMoon className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
 
-        {/* Navigation Links */}
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white">
-            <FaBars className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Dark Mode Toggle Button */}
-        <div className="flex gap-2 justify-center items-center">
-          <nav
-            className={`md:flex space-x-6 ${isMenuOpen ? "block" : "hidden"}`}
-          >
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-gray-800 text-white p-4 space-y-4">
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.href}
-                href={link.href}
-                className="hover:text-gray-400"
+                onClick={() => scrollToSection(link.href)}
+                className="block hover:text-gray-400"
               >
                 {link.label}
-              </Link>
+              </button>
             ))}
-          </nav>
-          <button
-            onClick={toggleDarkMode}
-            className="bg-gray-800 text-white p-2 rounded-md hover:bg-gray-700"
-          >
-            {isDarkMode ? (
-              <FaSun className="w-6 h-6" />
-            ) : (
-              <FaMoon className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 text-white p-4 space-y-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="block hover:text-gray-400"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
+          </div>
+        )}
+      </Container>
     </header>
   );
 };

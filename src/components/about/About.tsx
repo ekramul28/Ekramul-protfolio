@@ -3,7 +3,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="w-full py-16 ">
+    <section id="about" className="w-full py-16 ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-6">
         {/* Left Side: Image */}
         <div className="flex justify-center">

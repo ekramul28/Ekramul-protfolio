@@ -6,7 +6,7 @@ import { IoSend } from "react-icons/io5";
 
 const Banner: React.FC = () => {
   return (
-    <section className="w-full py-16 relative">
+    <section id="banner" className="w-full py-16 mt-16 relative">
       {/* SVG Background */}
 
       <div className="px-6 flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
@@ -16,7 +16,7 @@ const Banner: React.FC = () => {
             href="https://github.com/ekramul"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-400"
+            className="hover:text-blue-500"
           >
             <FaGithub size={32} />
           </a>
@@ -24,7 +24,7 @@ const Banner: React.FC = () => {
             href="https://www.linkedin.com/in/ekramul"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-400"
+            className="hover:text-blue-500"
           >
             <FaLinkedin size={32} />
           </a>
@@ -32,7 +32,7 @@ const Banner: React.FC = () => {
             href="https://twitter.com/ekramul"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-400"
+            className="hover:text-blue-500"
           >
             <FaTwitter size={32} />
           </a>
