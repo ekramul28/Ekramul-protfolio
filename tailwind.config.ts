@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"], // Adding Poppins as the default sans font
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
