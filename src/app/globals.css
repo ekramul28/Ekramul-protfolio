@@ -56,63 +56,14 @@
   font-weight: 900;
   font-style: normal;
 }
-
-.poppins-thin-italic {
-  font-family: "Poppins", serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.poppins-extralight-italic {
-  font-family: "Poppins", serif;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.poppins-light-italic {
-  font-family: "Poppins", serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.poppins-regular-italic {
-  font-family: "Poppins", serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.poppins-medium-italic {
-  font-family: "Poppins", serif;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.poppins-semibold-italic {
-  font-family: "Poppins", serif;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.poppins-bold-italic {
-  font-family: "Poppins", serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.poppins-extrabold-italic {
-  font-family: "Poppins", serif;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.poppins-black-italic {
-  font-family: "Poppins", serif;
-  font-weight: 900;
-  font-style: italic;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-  --background: #ffffff; /* Light mode background */
+  --background: #f7f7f7; /* Light mode background */
   --foreground: #000000; /* Light mode text color */
 }
 
@@ -134,4 +85,29 @@ body {
   background: var(--background);
   font-family: poppins, Arial, Helvetica, sans-serif;
   color: black;
+}
+
+.home__social {
+  display: grid;
+  grid-template-columns: max-content;
+  row-gap: 1rem;
+}
+
+.home__social-icon {
+  font-size: 1.05rem;
+  color: var(--first-color);
+}
+.home__social-icon:hover {
+  color: var(--first-color-lighter);
+}
+
+.home__blob {
+  width: 200px;
+  fill: var(--first-color);
+  /* fill: hsl(69, 69%, 61%); */
+}
+.home__blob-img {
+  width: 180%;
+  height: 145%;
+  padding-left: 30px;
 }

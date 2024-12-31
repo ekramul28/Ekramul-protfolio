@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="w-full   py-4">
-      <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between">
+      <div className=" px-4 flex items-center justify-between">
         {/* Logo/Brand */}
         <div className="text-2xl font-bold">
           <Link href="/">Ekramul Portfolio</Link>
