@@ -88,6 +88,11 @@ const Navbar: React.FC = () => {
                 <FaMoon className="w-6 h-6" />
               )}
             </button>
+            <Link href={"/login"}>
+              <button className="px-6 py-3 w-full bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300 flex items-center space-x-2">
+                Login
+              </button>
+            </Link>
           </div>
         </div>
 
