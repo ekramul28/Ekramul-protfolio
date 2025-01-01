@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useState } from "react";
-import axios from "axios";
 
 const AddSkill = () => {
   const [skill, setSkill] = useState("");
@@ -17,26 +16,34 @@ const AddSkill = () => {
 
     // Prepare the data to send
     const data = {
-      skill,
+      name: skill,
       level,
     };
 
     try {
       setLoading(true);
 
-      const response = await axios.post("http://localhost:5000/addSkill", data);
+      const response = await fetch("http://localhost:5000/skills", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Specify that we're sending JSON data
+        },
+        body: JSON.stringify(data), // Send the data as a JSON string
+      });
 
-      if (response.status === 200) {
+      // Check if the response status is OK (200-299)
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData);
         setMessage("Skill added successfully!");
         setSkill("");
         setLevel("");
       } else {
-        setMessage(response.data.message || "Failed to add skill.");
+        const errorData = await response.json();
+        setMessage(errorData.message || "Failed to add skill.");
       }
     } catch (error: any) {
-      setMessage(
-        error.response?.data?.message || "An error occurred. Please try again."
-      );
+      setMessage(error.message || "An error occurred. Please try again.");
       console.error("Error adding skill:", error);
     } finally {
       setLoading(false);

@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 
 const AddProject = () => {
@@ -12,8 +14,14 @@ const AddProject = () => {
   const [githubBackend, setGithubBackend] = useState("");
   const [liveLink, setLiveLink] = useState("");
   const [videoLink, setVideoLink] = useState("");
+  const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const imageArray = e.target.value.split(",").map((url) => url.trim());
+    setImages(imageArray); // Set the images state to the array
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,31 +30,38 @@ const AddProject = () => {
     const data = {
       projectName,
       description,
+      startDate,
+      endDate,
       frontendTechnologies: frontendTechnologies
         .split(",")
-        .map((tech) => tech.trim()),
+        .map((tech) => tech.trim()), // Convert comma-separated string into an array
       backendTechnologies: backendTechnologies
         .split(",")
         .map((tech) => tech.trim()),
-      startDate,
-      endDate,
-      githubFrontend,
-      githubBackend,
-      liveLink,
-      videoLink,
+      images,
+      links: {
+        githubFrontend,
+        githubBackend,
+        liveDemo: liveLink,
+        watchVideo: videoLink,
+      },
     };
+
+    console.log(data);
 
     try {
       setLoading(true);
 
       // Replace `API_URL` with your actual backend endpoint
-      const response = await fetch("http://localhost:5000/addProject", {
+      const response = await fetch("http://localhost:5000/projects", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
+
+      console.log(response);
 
       if (response.ok) {
         setMessage("Project added successfully!");
@@ -271,6 +286,25 @@ const AddProject = () => {
             </div>
           </div>
         </div>
+
+        {/* Image URLs Input */}
+        <div className="md:col-span-2">
+          <label
+            htmlFor="images"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Images (comma-separated URLs)
+          </label>
+          <textarea
+            id="images"
+            value={images.join(", ")} // Display the images as a comma-separated string
+            onChange={handleImageChange} // Call the handler to update state
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            placeholder="Enter image URLs separated by commas"
+            required
+          />
+        </div>
+
         {/* Submit Button */}
         <div>
           <button

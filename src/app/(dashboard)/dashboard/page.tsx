@@ -6,12 +6,13 @@ const AddBlog = () => {
   const [link, setLink] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [successMessage, setSuccessMessage] = useState(""); // State for success message
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const formData = {
-      imageUrl,
+      image: imageUrl,
       link,
       title,
       description,
@@ -20,7 +21,7 @@ const AddBlog = () => {
     console.log("Form data submitted:", formData);
 
     try {
-      const response = await fetch("http://localhost:5000/blog", {
+      const response = await fetch("http://localhost:5000/blogs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,14 +35,20 @@ const AddBlog = () => {
 
       const data = await response.json();
       console.log("Response from server:", data);
-      // Optionally, you can reset the form fields after successful submission
+
+      // Show success message
+      setSuccessMessage("Blog post submitted successfully!");
+
+      // Reset form fields after successful submission
       setTitle("");
       setLink("");
       setDescription("");
       setImageUrl("");
+
+      // Clear the success message after a timeout (optional)
+      setTimeout(() => setSuccessMessage(""), 3000); // Clears message after 3 seconds
     } catch (error) {
       console.error("Error submitting blog post:", error);
-      alert("There was an error submitting your blog post.");
     }
   };
 
@@ -54,6 +61,14 @@ const AddBlog = () => {
         Share your thoughts, ideas, and stories with the world. Fill out the
         form below to create a new blog post.
       </p>
+
+      {/* Success Message */}
+      {successMessage && (
+        <div className="mb-6 p-4 bg-green-100 text-green-700 text-center rounded-lg">
+          {successMessage}
+        </div>
+      )}
+
       <form
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-4 rounded-lg shadow-md"
