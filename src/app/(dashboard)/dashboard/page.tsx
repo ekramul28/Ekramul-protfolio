@@ -1,35 +1,52 @@
 "use client";
-import Image from "next/image";
 import React, { useState } from "react";
 
 const AddBlog = () => {
-  const [images, setImages] = useState<string[]>([]);
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const imageFiles = Array.from(e.target.files).map((file) =>
-        URL.createObjectURL(file)
-      );
-      setImages(imageFiles);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     const formData = {
-      images,
+      imageUrl,
       link,
       title,
       description,
     };
+
     console.log("Form data submitted:", formData);
+
+    try {
+      const response = await fetch("http://localhost:5000/blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData), // Send the form data as JSON
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit blog post");
+      }
+
+      const data = await response.json();
+      console.log("Response from server:", data);
+      // Optionally, you can reset the form fields after successful submission
+      setTitle("");
+      setLink("");
+      setDescription("");
+      setImageUrl("");
+    } catch (error) {
+      console.error("Error submitting blog post:", error);
+      alert("There was an error submitting your blog post.");
+    }
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gray-50 rounded-lg shadow-lg mt-14  ">
+    <div className="max-w-4xl mx-auto p-6 bg-gray-50 rounded-lg shadow-lg mt-14">
       <h1 className="text-2xl font-bold text-gray-800 text-center">
         Add Your Blog
       </h1>
@@ -58,6 +75,7 @@ const AddBlog = () => {
             required
           />
         </div>
+
         {/* Link */}
         <div>
           <label
@@ -94,31 +112,23 @@ const AddBlog = () => {
           />
         </div>
 
-        {/* Image Upload */}
+        {/* Image URL Input */}
         <div className="md:col-span-2">
           <label
-            htmlFor="images"
+            htmlFor="imageUrl"
             className="block text-sm font-medium text-gray-700"
           >
-            Blog Images
+            Blog Image URL
           </label>
-          <input
-            type="file"
-            id="images"
-            onChange={handleImageChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-          />
-          <div className="mt-2 grid grid-cols-3 gap-2">
-            {images.map((image, index) => (
-              <Image
-                key={index}
-                src={image}
-                height={40}
-                width={40}
-                alt={`Product Image ${index + 1}`}
-                className="w-full h-auto rounded-md"
-              />
-            ))}
+          <div className="flex items-center">
+            <input
+              type="url"
+              id="imageUrl"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              placeholder="Enter image URL"
+            />
           </div>
         </div>
 

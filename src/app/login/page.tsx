@@ -1,20 +1,47 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email === "" || password === "") {
       setError("Both fields are required.");
-    } else {
-      setError("");
-      // Handle login logic (e.g., API call)
-      console.log("Logging in with", email, password);
+      return;
+    }
+    console.log(email, password);
+    setError("");
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.message || "Failed to log in");
+        setLoading(false);
+        return;
+      }
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      router.push("/dashboard");
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,21 +99,12 @@ const LoginPage: React.FC = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition"
+            className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition disabled:bg-gray-300"
+            disabled={loading}
           >
-            Log In
+            {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
-
-        {/* Link to Sign Up */}
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600">
-            Dont have an account?{" "}
-            <a href="/signup" className="text-blue-500 hover:underline">
-              Sign Up
-            </a>
-          </p>
-        </div>
       </div>
     </section>
   );

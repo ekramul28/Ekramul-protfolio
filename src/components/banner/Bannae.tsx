@@ -6,7 +6,7 @@ import { IoSend } from "react-icons/io5";
 
 const Banner: React.FC = () => {
   return (
-    <section id="banner" className="w-full py-16 mt-16 relative">
+    <section id="banner" className="w-full py-16 mt-24  relative">
       {/* SVG Background */}
 
       <div className="px-6 flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">

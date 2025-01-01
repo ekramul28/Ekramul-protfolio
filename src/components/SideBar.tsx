@@ -36,21 +36,23 @@ const SideBar = () => {
       <div
         className={`${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed inset-y-0 left-0 z-40 w-64 transform bg-white transition-transform duration-300 ease-in-out sm:static sm:translate-x-0 sm:flex sm:h-screen sm:flex-col sm:justify-between border-e`}
+        } fixed inset-y-0 left-0 z-40 transform bg-white transition-transform duration-300 ease-in-out sm:static sm:translate-x-0 sm:flex sm:h-screen sm:flex-col sm:justify-between border-e`}
       >
         <div className="px-4 py-6">
-          <span className="grid h-10 w-32 place-content-center rounded-lg  text-xs text-gray-600">
+          <span className=" hidden md:block h-10 w-32 place-content-center rounded-lg  text-xs text-gray-600">
             <div className="h-12  mt-4 ml-3">
-              <h1 className="h-12 w-12 font-bold text-2xl">Ekramul</h1>
+              <h1 className="h-12 w-12 font-bold text-2xl">
+                <Link href={"/"}>Ekramul</Link>
+              </h1>
             </div>
           </span>
 
           <ul className="mt-6 space-y-1">
             <li>
               <Link
-                href="/"
+                href="/dashboard"
                 className={` ${
-                  pathname === "/"
+                  pathname === "/dashboard"
                     ? "text-blue-500 block rounded-lg px-4 py-2 text-sm font-medium  hover:bg-gray-100 hover:text-gray-700"
                     : " block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                 }`}
@@ -60,9 +62,9 @@ const SideBar = () => {
             </li>
             <li>
               <Link
-                href="/addSkill"
+                href="/dashboard/addSkill"
                 className={` ${
-                  pathname === "/addSkill"
+                  pathname === "/dashboard/addSkill"
                     ? "text-blue-500 block rounded-lg px-4 py-2 text-sm font-medium  hover:bg-gray-100 hover:text-gray-700"
                     : " block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                 }`}
@@ -73,9 +75,9 @@ const SideBar = () => {
 
             <li>
               <Link
-                href="/addProject"
+                href="/dashboard/addProject"
                 className={` ${
-                  pathname === "/addProject"
+                  pathname === "/dashboard/addProject"
                     ? "text-blue-500 block rounded-lg px-4 py-2 text-sm font-medium  hover:bg-gray-100 hover:text-gray-700"
                     : " block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                 }`}

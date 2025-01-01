@@ -1,17 +1,20 @@
+import React from "react";
 import SideBar from "@/components/SideBar";
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <div className="grid grid-cols-12 min-h-screen">
+    <div className=" min-h-screen bg-gray-100 grid lg:grid-cols-10">
       <div className="col-span-2">
         <SideBar />
       </div>
 
-      <div className="col-span-12 lg:col-span-10 ml-3">{children}</div>
+      <div className="col-span-8">
+        <main className="px-4 h-screen">{children}</main>
+      </div>
     </div>
   );
 }

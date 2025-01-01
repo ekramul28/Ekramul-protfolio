@@ -31,8 +31,8 @@ const blogPosts = [
 
 const BlogSection: React.FC = () => {
   return (
-    <section id="blog" className="w-full py-16 ">
-      <div className="container mx-auto px-6">
+    <section className="w-full  ">
+      <div className="  ">
         <h2 className="text-3xl font-bold  text-center mb-8">
           Latest Blog Posts
         </h2>

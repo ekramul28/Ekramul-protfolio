@@ -40,16 +40,13 @@ const AddProject = () => {
       setLoading(true);
 
       // Replace `API_URL` with your actual backend endpoint
-      const response = await fetch(
-        "https://your-backend-url.com/api/addProject",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://localhost:5000/addProject", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
         setMessage("Project added successfully!");
@@ -76,8 +73,8 @@ const AddProject = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-gray-50 rounded-lg shadow-lg mt-8">
-      <h1 className="text-2xl font-bold text-gray-800 text-center">
+    <div className=" bg-gray-50 rounded-lg shadow-lg mt-8">
+      <h1 className="text-2xl font-bold pt-4 text-gray-800 text-center">
         Add a New Project
       </h1>
       <p className="text-gray-600 text-center mt-2 mb-6">
@@ -85,195 +82,200 @@ const AddProject = () => {
       </p>
       <form
         onSubmit={handleSubmit}
-        className="grid grid-cols-1 gap-6 bg-white p-4 rounded-lg shadow-md"
+        className=" bg-white p-4 rounded-lg shadow-md"
       >
-        {/* Project Name */}
-        <div>
-          <label
-            htmlFor="projectName"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Project Name
-          </label>
-          <input
-            type="text"
-            id="projectName"
-            value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter project name"
-            required
-          />
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="col-span-1 ">
+            {/* Project Name */}
+            <div>
+              <label
+                htmlFor="projectName"
+                className="block text-sm font-medium text-gray-700 mt-4 "
+              >
+                Project Name
+              </label>
+              <input
+                type="text"
+                id="projectName"
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter project name"
+                required
+              />
+            </div>
 
-        {/* Description */}
-        <div>
-          <label
-            htmlFor="description"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Description
-          </label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter a brief description of the project"
-            required
-          ></textarea>
-        </div>
+            {/* Description */}
+            <div>
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium text-gray-700 mt-4 lg:mt-0"
+              >
+                Description
+              </label>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter a brief description of the project"
+                required
+              ></textarea>
+            </div>
 
-        {/* Frontend Technologies */}
-        <div>
-          <label
-            htmlFor="frontendTechnologies"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Frontend Technologies
-          </label>
-          <input
-            type="text"
-            id="frontendTechnologies"
-            value={frontendTechnologies}
-            onChange={(e) => setFrontendTechnologies(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter frontend technologies (comma-separated)"
-            required
-          />
-        </div>
+            {/* Frontend Technologies */}
+            <div>
+              <label
+                htmlFor="frontendTechnologies"
+                className="block text-sm font-medium text-gray-700 mt-4"
+              >
+                Frontend Technologies
+              </label>
+              <input
+                type="text"
+                id="frontendTechnologies"
+                value={frontendTechnologies}
+                onChange={(e) => setFrontendTechnologies(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter frontend technologies (comma-separated)"
+                required
+              />
+            </div>
 
-        {/* Backend Technologies */}
-        <div>
-          <label
-            htmlFor="backendTechnologies"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Backend Technologies
-          </label>
-          <input
-            type="text"
-            id="backendTechnologies"
-            value={backendTechnologies}
-            onChange={(e) => setBackendTechnologies(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter backend technologies (comma-separated)"
-            required
-          />
-        </div>
+            {/* Backend Technologies */}
+            <div>
+              <label
+                htmlFor="backendTechnologies"
+                className="block text-sm font-medium text-gray-700 mt-4"
+              >
+                Backend Technologies
+              </label>
+              <input
+                type="text"
+                id="backendTechnologies"
+                value={backendTechnologies}
+                onChange={(e) => setBackendTechnologies(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter backend technologies (comma-separated)"
+                required
+              />
+            </div>
 
-        {/* Start Date */}
-        <div>
-          <label
-            htmlFor="startDate"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Start Date
-          </label>
-          <input
-            type="date"
-            id="startDate"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            required
-          />
-        </div>
+            {/* Start Date */}
+            <div>
+              <label
+                htmlFor="startDate"
+                className="block text-sm font-medium text-gray-700 mt-4"
+              >
+                Start Date
+              </label>
+              <input
+                type="date"
+                id="startDate"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                required
+              />
+            </div>
+          </div>
 
-        {/* End Date */}
-        <div>
-          <label
-            htmlFor="endDate"
-            className="block text-sm font-medium text-gray-700"
-          >
-            End Date
-          </label>
-          <input
-            type="date"
-            id="endDate"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-          />
-        </div>
+          <div className="col-span-1">
+            {/* End Date */}
+            <div>
+              <label
+                htmlFor="endDate"
+                className="block text-sm font-medium text-gray-700 mt-4"
+              >
+                End Date
+              </label>
+              <input
+                type="date"
+                id="endDate"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              />
+            </div>
 
-        {/* GitHub Frontend Link */}
-        <div>
-          <label
-            htmlFor="githubFrontend"
-            className="block text-sm font-medium text-gray-700"
-          >
-            GitHub Frontend Link
-          </label>
-          <input
-            type="url"
-            id="githubFrontend"
-            value={githubFrontend}
-            onChange={(e) => setGithubFrontend(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter GitHub Frontend URL"
-          />
-        </div>
+            {/* GitHub Frontend Link */}
+            <div>
+              <label
+                htmlFor="githubFrontend"
+                className="block text-sm font-medium text-gray-700 mt-4"
+              >
+                GitHub Frontend Link
+              </label>
+              <input
+                type="url"
+                id="githubFrontend"
+                value={githubFrontend}
+                onChange={(e) => setGithubFrontend(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter GitHub Frontend URL"
+              />
+            </div>
 
-        {/* GitHub Backend Link */}
-        <div>
-          <label
-            htmlFor="githubBackend"
-            className="block text-sm font-medium text-gray-700"
-          >
-            GitHub Backend Link
-          </label>
-          <input
-            type="url"
-            id="githubBackend"
-            value={githubBackend}
-            onChange={(e) => setGithubBackend(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter GitHub Backend URL"
-          />
-        </div>
+            {/* GitHub Backend Link */}
+            <div>
+              <label
+                htmlFor="githubBackend"
+                className="block text-sm font-medium text-gray-700 mt-4"
+              >
+                GitHub Backend Link
+              </label>
+              <input
+                type="url"
+                id="githubBackend"
+                value={githubBackend}
+                onChange={(e) => setGithubBackend(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter GitHub Backend URL"
+              />
+            </div>
 
-        {/* Live Link */}
-        <div>
-          <label
-            htmlFor="liveLink"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Live Project Link
-          </label>
-          <input
-            type="url"
-            id="liveLink"
-            value={liveLink}
-            onChange={(e) => setLiveLink(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter Live Project URL"
-          />
-        </div>
+            {/* Live Link */}
+            <div>
+              <label
+                htmlFor="liveLink"
+                className="block text-sm font-medium text-gray-700 mt-4"
+              >
+                Live Project Link
+              </label>
+              <input
+                type="url"
+                id="liveLink"
+                value={liveLink}
+                onChange={(e) => setLiveLink(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter Live Project URL"
+              />
+            </div>
 
-        {/* Video Link */}
-        <div>
-          <label
-            htmlFor="videoLink"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Project Video Link
-          </label>
-          <input
-            type="url"
-            id="videoLink"
-            value={videoLink}
-            onChange={(e) => setVideoLink(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Enter Project Video URL"
-          />
+            {/* Video Link */}
+            <div>
+              <label
+                htmlFor="videoLink"
+                className="block text-sm font-medium text-gray-700 mt-4"
+              >
+                Project Video Link
+              </label>
+              <input
+                type="url"
+                id="videoLink"
+                value={videoLink}
+                onChange={(e) => setVideoLink(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter Project Video URL"
+              />
+            </div>
+          </div>
         </div>
-
         {/* Submit Button */}
         <div>
           <button
             type="submit"
-            className={`w-full px-4 py-2 text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+            className={`w-full px-4 mt-4 py-2 text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
               loading
                 ? "bg-blue-400 cursor-not-allowed"
                 : "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500"

@@ -17,25 +17,25 @@ const Home = () => {
     <div>
       <Container>
         <Navbar />
-        <section id="home">
+        <section id="home" className="scroll-mt-14">
           <Banner />
         </section>
-        <section id="about">
+        <section id="about" className="scroll-mt-14">
           <About />
         </section>
-        <section id="skills">
+        <section id="skills" className="scroll-mt-14">
           <Skills />
         </section>
-        <section id="projects">
+        <section id="projects" className="scroll-mt-14">
           <Projects />
         </section>
-        <section id="contact-me">
+        <section id="contact-me" className="scroll-mt-14">
           <ContactMe />
         </section>
-        <section id="blog">
+        <section id="blog" className="scroll-mt-14">
           <BlogSection />
         </section>
-        <section id="qualification">
+        <section id="qualification" className="scroll-mt-14">
           <Qualification />
         </section>
         <GoToTopButton />
