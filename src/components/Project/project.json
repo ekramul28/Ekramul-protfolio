@@ -1,0 +1,126 @@
+[
+  {
+    "title": "Thyrocare",
+    "frontend": ["Tailwind, NextJs, Redux, TypeScript"],
+    "backend": ["NodeJs, ExpressJs, TypeScript, PostgreSQL, Prisma, JWT, Zod"],
+    "description": "Thyrocare is an e-commerce project focused on providing healthcare products and services online. The platform allows users to browse, search, and purchase a wide range of medicines, health supplements, and other healthcare-related items. It features a user-friendly interface, advanced search and filter options, and secure payment methods.",
+    "image": [
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742789/Screenshot_2024-11-10_150413_ayeu1r.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742788/Screenshot_2024-09-06_211600_dqjsgf.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742787/Screenshot_2024-11-10_150438_xkel00.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742786/Screenshot_2024-11-10_150525_tk5dfd.png"
+    ],
+    "links": {
+      "githubFrontend": "https://github.com/ekramul28/E-Commerce-Application-client",
+      "githubBackend": "https://github.com/ekramul28/E-Commerce-Application-Server",
+      "liveDemo": "https://medicine-e-commerce-three.vercel.app/",
+      "watchVideo": "https://youtu.be/Scjy2SjiXRo?si=3wfK-4uK9wfCKzWc"
+    }
+  },
+  {
+    "title": "Travel Tips & Destination Guides",
+    "frontend": ["Tailwind, NextJs, NextUI, Axios, TanStack Query, TypeScript"],
+    "backend": ["NodeJs, ExpressJs, TypeScript, MongoDB, JWT, Zod"],
+    "description": "The Travel Tips & Destination Guides platform connects travel enthusiasts, enabling users to share personal travel stories, exchange tips, and interact with fellow travelers. It offers user authentication, content sharing, premium access features, and robust social engagement functionalities.",
+    "image": [
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742791/Screenshot_2024-11-10_144153_grwcns.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742792/Screenshot_2024-11-10_144025_xtkdfw.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742799/Screenshot_2024-11-10_143716_cp3bl9.png"
+    ],
+    "links": {
+      "githubFrontend": "https://github.com/ekramul28/Travel-Tips-Destination-Guides-client",
+      "githubBackend": "https://github.com/ekramul28/Travel-Tips-Destination-Guides-server",
+      "liveDemo": "https://medicine-e-commerce-two.vercel.app/",
+      "watchVideo": "https://youtu.be/i0zq90t9kDE?si=DDUFeYyN7Qhc_EIO"
+    }
+  },
+  {
+    "title": "FitTrack",
+    "frontend": [
+      "Tailwind, NextJs, NextAuth, Material UI, Zegocloud for watchVideo calls, AI guidance"
+    ],
+    "backend": ["NodeJs, ExpressJs, MongoDB"],
+    "description": "FitTrack is a cutting-edge healthcare and fitness platform developed by six skilled developers. The project focuses on the front-end, using technologies like Next.js and Material UI. It features integrated Zegocloud for real-time watchVideo calls, allowing users to connect with trainers. Ekramul personally developed an AI guidance system powered by ChatGPT, offering users an interactive personal trainer.",
+    "image": [
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742803/Fit-track-dashboard_bjjydw.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742799/Fit-track-feather_riiaij.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742798/Fit-track-home_uwusiu.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742796/Fit-track-trainer_eiys15.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742794/pdf-vidow_wdjauq.png"
+    ],
+    "links": {
+      "githubFrontend": "https://github.com/ekramul28/Fit-Track-with-6-developer",
+      "liveDemo": "https://fit-track-client.vercel.app/",
+      "watchVideo": "https://youtu.be/KFxcrMYu1Y4?si=ktOjALxbRzT3D1o9"
+    }
+  },
+  {
+    "title": "PDFMagic",
+    "frontend": ["Tailwind, NextJs, NextAuth"],
+    "backend": ["NodeJs, ExpressJs, MongoDB"],
+    "description": "PDFMagic is a robust web application developed by two dedicated developers, focusing primarily on backend functionalities. The app integrates a range of features, including Word to PDF, JPG to PDF, Merge PDF, Page Numbering, Sign to PDF, and Excel to PDF. It also offers a dark mode and authentication for enhanced user experience. Built with Next.js, NextAuth, Node.js, Mongoose, and MongoDB, PDFMagic is designed to handle complex PDF creation and management tasks efficiently.",
+    "links": {
+      "githubFrontend": "https://github.com/The-Kingfishers/pdfmagic",
+      "liveDemo": "https://pdfmagic-bice.vercel.app/",
+      "watchVideo": "https://youtu.be/E4FSojS96Fs?si=dhOkc0X2qu-oEXlO"
+    },
+    "image": [
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742794/pdf-feather_zeqobn.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742792/pdf-home_cw1b79.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742794/pdf-contack_rcorfs.png"
+    ]
+  },
+  {
+    "title": "Car Washing Booking System",
+    "frontend": ["Tailwind, ReactJs, Shadcn/UI, Redux, TypeScript"],
+    "backend": ["NodeJs, ExpressJs, TypeScript, MongoDB, JWT, Zod"],
+    "description": "This web application provides a streamlined experience for booking car wash services, managing services and slots, and overseeing user activity. The system caters to both end-users and administrators, ensuring a smooth operation for all parties involved.",
+    "image": [
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735744292/Screenshot_1-1-2025_21338_car-washing-booking-system-client.vercel.app_mjvi2z.jpg",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735744293/Screenshot_1-1-2025_2143_car-washing-booking-system-client.vercel.app_kdid6t.jpg",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735744293/Screenshot_1-1-2025_21229_car-washing-booking-system-client.vercel.app_nkkc1y.jpg",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735744277/Screenshot_2025-01-01_210309_ym559h.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735744291/Screenshot_1-1-2025_21456_car-washing-booking-system-client.vercel.app_pbb6y9.jpg"
+    ],
+    "links": {
+      "githubFrontend": "https://github.com/ekramul28/Car-Wash-Booking-System-client",
+      "githubBackend": "https://github.com/ekramul28/Car-Wash-Booking-System-server",
+      "liveDemo": "https://car-washing-booking-system-client.vercel.app/",
+      "watchVideo": "https://youtu.be/PTSSjJeifZE?si=YmOb1s6lO6zTgdDP"
+    }
+  },
+  {
+    "title": "Blood Donation App",
+    "frontend": ["Tailwind, ReactJs", "Redux"],
+    "backend": ["NodeJs, ExpressJs, MongoDB, JWT"],
+    "description": "The blood donation web app is a comprehensive platform designed to facilitate blood donations efficiently. It includes an admin dashboard for managing donor information, tracking donations, and overseeing the entire donation process. The app ensures streamlined communication between donors and recipients.",
+    "image": [
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742799/blood-pan_ocbv2e.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742802/blood-home_zsdyag.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735742800/blood-serch_eaz7jc.png"
+    ],
+    "links": {
+      "githubFrontend": "https://github.com/ekramul28/Blood-Donation-App",
+      "liveDemo": "https://blood-donation-app.vercel.app/",
+      "watchVideo": "https://youtu.be/example-watchVideo"
+    }
+  },
+
+  {
+    "title": "Mechanical Keyboard Shop",
+    "frontend": ["Tailwind, ReactJs, AntD, Redux, TypeScript"],
+    "backend": ["NodeJs, ExpressJs, TypeScript, MongoDB, JWT, Zod"],
+    "description": "The Mechanical Keyboard Shop is an e-commerce website exclusively for mechanical keyboards. This project is built using React, Redux, Mongoose, and Express. It features easy product browsing, detailed product pages, a smooth cart system, and powerful tools for administrators to manage products. Users will enjoy fast search, page refresh warnings, filtering, and optional integration with Stripe for secure payments.",
+    "links": {
+      "githubFrontend": "https://github.com/ekramul28/Mechanical-Keyboard-Shop",
+      "githubBackend": "https://github.com/ekramul28/Mechanical-Keyboard-Shop-Server",
+      "liveDemo": "https://mechanical-keyboard-shop-ten.vercel.app/",
+      "watchVideo": "https://youtu.be/EkXCsxokXsU?si=ppk0vPCqK_cLptm7"
+    },
+    "image": [
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735744277/Screenshot_2025-01-01_210630_sfi2ci.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735744276/Screenshot_2025-01-01_210650_akulwa.png",
+      "https://res.cloudinary.com/dvtdneocc/image/upload/v1735744277/Screenshot_2025-01-01_210720_us0q8b.png"
+    ]
+  }
+]

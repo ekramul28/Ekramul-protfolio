@@ -1,28 +1,37 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 
-const level1Skills = [
-  { name: "Git", level: "Expert" },
-  { name: "HTML", level: "Expert" },
-  { name: "CSS", level: "Expert" },
-  { name: "ReactJs", level: "Expert" },
-  { name: "NextJs", level: "Intermediate" },
-  { name: "Redux", level: "Intermediate" },
-];
+// const level1Skills = [
+//   { name: "HTML", level: "Expert" },
+//   { name: "CSS", level: "Expert" },
+//   { name: "Tailwind", level: "Intermediate" },
+//   { name: "Git", level: "Expert" },
+//   { name: "ReactJs", level: "Expert" },
+//   { name: "NextJs", level: "Intermediate" },
+// ];
 
-const level2Skills = [
-  { name: "Tailwind", level: "Intermediate" },
-  { name: "Material UI", level: "Intermediate" },
-  { name: "shadcn/ui", level: "Beginner" },
-  { name: "Antd", level: "Intermediate" },
-  { name: "NodeJs", level: "Intermediate" },
-  { name: "ExpressJs", level: "Intermediate" },
-  { name: "TypeScript", level: "Intermediate" },
-  { name: "MongoDB", level: "Intermediate" },
-  { name: "PostgresSQL", level: "Intermediate" },
-  { name: "Prisma", level: "Beginner" },
-];
+// const level2Skills = [
+//   { name: "Redux", level: "Intermediate" },
+//   { name: "Material UI", level: "Intermediate" },
+//   { name: "shadcn/ui", level: "Beginner" },
+//   { name: "Antd", level: "Intermediate" },
+//   { name: "NodeJs", level: "Intermediate" },
+//   { name: "ExpressJs", level: "Intermediate" },
+//   { name: "TypeScript", level: "Intermediate" },
+//   { name: "MongoDB", level: "Intermediate" },
+//   { name: "PostgresSQL", level: "Intermediate" },
+//   { name: "Prisma", level: "Beginner" },
+// ];
 
-const Skills = () => {
+const Skills = async () => {
+  const level1Res = await fetch("http://localhost:5000/skills");
+  const level1Skills = await level1Res.json();
+
+  const level2Res = await fetch("http://localhost:5000/level2");
+  const level2Skills = await level2Res.json();
+
+  console.log(level1Skills);
+  console.log(level2Skills);
   return (
     <section id="skill" className="w-full py-16 ">
       <div className="container mx-auto px-6">
@@ -30,7 +39,7 @@ const Skills = () => {
         <div className="mb-12">
           <h3 className="text-2xl font-semibold  mb-6">Level 1 Skills</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {level1Skills.map((skill, index) => (
+            {level1Skills.map((skill: any, index: any) => (
               <div
                 key={index}
                 className="flex items-center gap-4 p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300"
@@ -49,7 +58,7 @@ const Skills = () => {
           <h3 className="text-2xl font-semibold  mb-6">Level 2 Skills</h3>
           <div className="mb-6 border-t border-gray-300"></div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {level2Skills.map((skill, index) => (
+            {level2Skills.map((skill: any, index: any) => (
               <div
                 key={index}
                 className="relative flex items-center gap-4 p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300"
