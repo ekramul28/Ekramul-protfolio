@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "@/components/navber/navber";
 import Footer from "@/components/Footer/Footer";
+import NavbarDetailsPage from "@/components/navber/navberForDetalisPage";
 
 export default function DashboardLayout({
   children,
@@ -9,7 +9,7 @@ export default function DashboardLayout({
 }>) {
   return (
     <div className="">
-      <Navbar />
+      <NavbarDetailsPage />
       <div className="mt-24">{children}</div>
       <Footer />
     </div>

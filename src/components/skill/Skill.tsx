@@ -3,28 +3,6 @@ import { fetchSkillsLevel2 } from "@/utils/api/level2SkillApi";
 import { fetchSkills } from "@/utils/api/skillApi";
 import React from "react";
 
-// const level1Skills = [
-//   { name: "HTML", level: "Expert" },
-//   { name: "CSS", level: "Expert" },
-//   { name: "Tailwind", level: "Intermediate" },
-//   { name: "Git", level: "Expert" },
-//   { name: "ReactJs", level: "Expert" },
-//   { name: "NextJs", level: "Intermediate" },
-// ];
-
-// const level2Skills = [
-//   { name: "Redux", level: "Intermediate" },
-//   { name: "Material UI", level: "Intermediate" },
-//   { name: "shadcn/ui", level: "Beginner" },
-//   { name: "Antd", level: "Intermediate" },
-//   { name: "NodeJs", level: "Intermediate" },
-//   { name: "ExpressJs", level: "Intermediate" },
-//   { name: "TypeScript", level: "Intermediate" },
-//   { name: "MongoDB", level: "Intermediate" },
-//   { name: "PostgresSQL", level: "Intermediate" },
-//   { name: "Prisma", level: "Beginner" },
-// ];
-
 const Skills = async () => {
   const level1Skills = await fetchSkills();
 

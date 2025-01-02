@@ -17,9 +17,9 @@ const ProjectDetails = async ({ params }: any) => {
   }
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="p-6 max-w-6xl mx-auto z-10">
       <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
-      <p className="mb-6 text-gray-700">{project.description}</p>
+      <p className="mb-6 ">{project.description}</p>
 
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Technologies Used:</h2>
