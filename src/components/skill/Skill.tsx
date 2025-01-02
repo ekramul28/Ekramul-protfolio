@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { fetchSkillsLevel2 } from "@/utils/api/level2SkillApi";
 import { fetchSkills } from "@/utils/api/skillApi";
+import { isUserLoggedIn } from "@/utils/api/userApi";
 import React from "react";
 
 const Skills = async () => {
   const level1Skills = await fetchSkills();
 
   const level2Skills = await fetchSkillsLevel2();
+  const user = await isUserLoggedIn();
+  console.log({ user });
 
   console.log(level1Skills);
   console.log(level2Skills);
