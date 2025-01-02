@@ -82,23 +82,25 @@ const ProjectDetails = async ({ params }: any) => {
       <div
         className={`grid gap-4 ${
           project.image.length === 3
-            ? "grid-cols-3"
+            ? "grid-cols-2"
             : project.image.length === 4
-            ? "grid-cols-4"
+            ? "grid-cols-2"
             : project.image.length === 5
-            ? "grid-cols-5"
+            ? "grid-cols-2"
             : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         }`}
       >
         {project.image.map((imgUrl: string, index: number) => (
-          <Image
-            key={index}
-            height={200}
-            width={200}
-            src={imgUrl}
-            alt={`Screenshot ${index + 1}`}
-            className="rounded shadow-md"
-          />
+          <div key={index} className="">
+            <Image
+              key={index}
+              height={1000}
+              width={1000}
+              src={imgUrl}
+              alt={`Screenshot ${index + 1}`}
+              className="rounded h-[300px] w-full shadow-md object-cover"
+            />
+          </div>
         ))}
       </div>
     </div>
