@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fetchSkills, fetchSkillsLevel2 } from "@/utils/api/skillApi";
+import { fetchSkillsLevel2 } from "@/utils/api/level2SkillApi";
+import { fetchSkills } from "@/utils/api/skillApi";
 import React from "react";
 
 // const level1Skills = [
