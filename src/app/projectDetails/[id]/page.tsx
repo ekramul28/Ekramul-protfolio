@@ -1,11 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { fetchSingleProjects } from "@/utils/api/projectApi";
 import Image from "next/image";
 
-const ProjectDetails = async ({ params }: { params: { id: string } }) => {
+// interface ProjectDetailsProps {
+//   params: {
+//     id: string;
+//   };
+// }
+
+const ProjectDetails = async ({ params }: any) => {
   const { id } = params;
   const project = await fetchSingleProjects(id);
-  console.log(id);
-  console.log(project);
+
   if (!project) {
     return <div className="text-center text-red-500">Project not found.</div>;
   }
