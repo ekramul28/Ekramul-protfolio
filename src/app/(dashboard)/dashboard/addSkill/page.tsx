@@ -72,7 +72,7 @@ const AddSkill = () => {
       setLoading2(true);
 
       const response = await fetch(
-        "https://protfolio-web-server-orcin.vercel.app/level2",
+        "https://protfolio-web-server-orcin.vercel.app/level",
         {
           method: "POST",
           headers: {
