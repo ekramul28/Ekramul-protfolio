@@ -4,6 +4,7 @@ import {
   FaTwitter,
   FaInstagram,
   FaLinkedinIn,
+  FaGithub,
 } from "react-icons/fa";
 
 const Footer: React.FC = () => {
@@ -16,13 +17,13 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Contact Info</h3>
             <ul>
               <li className="mb-2">
-                <strong>Phone:</strong> +1 234 567 890
+                <strong>Phone:</strong> +8801762477828
               </li>
               <li className="mb-2">
-                <strong>Email:</strong> example@domain.com
+                <strong>Email:</strong> mdekramulhassan168@gmail.com
               </li>
               <li className="mb-2">
-                <strong>Location:</strong> 123 Street, City, Country
+                <strong>Location:</strong> jessore,Dakha,Bangladesh
               </li>
             </ul>
           </div>
@@ -32,22 +33,22 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul>
               <li className="mb-2">
-                <a href="/about" className="hover:text-blue-400">
+                <a href="#about" className="hover:text-blue-400">
                   About Us
                 </a>
               </li>
               <li className="mb-2">
-                <a href="/services" className="hover:text-blue-400">
+                <a href="#services" className="hover:text-blue-400">
                   Services
                 </a>
               </li>
               <li className="mb-2">
-                <a href="/projects" className="hover:text-blue-400">
+                <a href="#projects" className="hover:text-blue-400">
                   Projects
                 </a>
               </li>
               <li className="mb-2">
-                <a href="/contact" className="hover:text-blue-400">
+                <a href="#contact" className="hover:text-blue-400">
                   Contact
                 </a>
               </li>
@@ -59,32 +60,39 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/ekramulhassan28"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaFacebookF className="text-2xl hover:text-blue-600" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://twitter.com/@ekramul_28"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaTwitter className="text-2xl hover:text-blue-400" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/ekramul_28"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaInstagram className="text-2xl hover:text-pink-500" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/ekramul57"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaLinkedinIn className="text-2xl hover:text-blue-700" />
+              </a>
+              <a
+                href="https://github.com/ekramul28"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub className="text-2xl hover:text-blue-700" />
               </a>
             </div>
           </div>
@@ -93,7 +101,7 @@ const Footer: React.FC = () => {
         {/* Footer Bottom */}
         <div className="mt-12 border-t border-gray-600 pt-6 text-center">
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Your Company. All Rights Reserved.
+            &copy; {new Date().getFullYear()} Ekramul. All Rights Reserved.
           </p>
         </div>
       </div>

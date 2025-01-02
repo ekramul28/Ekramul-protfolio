@@ -1,7 +1,13 @@
 // components/Banner.tsx
 
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
 
 const Banner: React.FC = () => {
@@ -13,28 +19,42 @@ const Banner: React.FC = () => {
         {/* Left Side: Social Links */}
         <div className="flex flex-col items-center md:items-start space-y-4">
           <a
-            href="https://github.com/ekramul"
+            href="https://github.com/ekramul28"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500"
           >
-            <FaGithub size={32} />
+            <FaGithub size={20} />
           </a>
           <a
-            href="https://www.linkedin.com/in/ekramul"
+            href="https://www.linkedin.com/in/ekramul57"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500"
           >
-            <FaLinkedin size={32} />
+            <FaLinkedin size={20} />
           </a>
           <a
-            href="https://twitter.com/ekramul"
+            href="https://www.facebook.com/ekramulhassan28"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF size={20} className=" hover:text-blue-600" />
+          </a>
+          <a
+            href="https://twitter.com/@ekramul_28"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500"
           >
-            <FaTwitter size={32} />
+            <FaTwitter size={20} />
+          </a>
+          <a
+            href="https://instagram.com/ekramul_28"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram size={20} className=" hover:text-blue-500" />
           </a>
         </div>
 

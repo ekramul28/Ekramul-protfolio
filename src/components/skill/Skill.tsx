@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { fetchSkills, fetchSkillsLevel2 } from "@/utils/api/skillApi";
 import React from "react";
 
 // const level1Skills = [
@@ -24,11 +25,9 @@ import React from "react";
 // ];
 
 const Skills = async () => {
-  const level1Res = await fetch("http://localhost:5000/skills");
-  const level1Skills = await level1Res.json();
+  const level1Skills = await fetchSkills();
 
-  const level2Res = await fetch("http://localhost:5000/level2");
-  const level2Skills = await level2Res.json();
+  const level2Skills = await fetchSkillsLevel2();
 
   console.log(level1Skills);
   console.log(level2Skills);
@@ -39,7 +38,7 @@ const Skills = async () => {
         <div className="mb-12">
           <h3 className="text-2xl font-semibold  mb-6">Level 1 Skills</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {level1Skills.map((skill: any, index: any) => (
+            {level1Skills?.map((skill: any, index: any) => (
               <div
                 key={index}
                 className="flex items-center gap-4 p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300"
@@ -58,7 +57,7 @@ const Skills = async () => {
           <h3 className="text-2xl font-semibold  mb-6">Level 2 Skills</h3>
           <div className="mb-6 border-t border-gray-300"></div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {level2Skills.map((skill: any, index: any) => (
+            {level2Skills?.map((skill: any, index: any) => (
               <div
                 key={index}
                 className="relative flex items-center gap-4 p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300"

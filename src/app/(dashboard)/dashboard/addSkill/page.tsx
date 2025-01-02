@@ -27,13 +27,16 @@ const AddSkill = () => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:5000/skills", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Specify that we're sending JSON data
-        },
-        body: JSON.stringify(data), // Send the data as a JSON string
-      });
+      const response = await fetch(
+        "https://protfolio-web-server-orcin.vercel.app/skills",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Specify that we're sending JSON data
+          },
+          body: JSON.stringify(data), // Send the data as a JSON string
+        }
+      );
 
       // Check if the response status is OK (200-299)
       if (response.ok) {
@@ -68,13 +71,16 @@ const AddSkill = () => {
     try {
       setLoading2(true);
 
-      const response = await fetch("http://localhost:5000/level2", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Specify that we're sending JSON data
-        },
-        body: JSON.stringify(data), // Send the data as a JSON string
-      });
+      const response = await fetch(
+        "https://protfolio-web-server-orcin.vercel.app/level2",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Specify that we're sending JSON data
+          },
+          body: JSON.stringify(data), // Send the data as a JSON string
+        }
+      );
 
       // Check if the response status is OK (200-299)
       if (response.ok) {

@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { fetchBlog } from "@/utils/api/blogApi";
 import Image from "next/image";
 import React from "react";
 
 const BlogSection = async () => {
-  const res = await fetch("http://localhost:5000/blogs");
-  const blogPosts = await res.json();
-
+  const blogPosts = await fetchBlog();
   return (
     <section className="w-full  ">
       <div className="  ">
@@ -18,7 +17,7 @@ const BlogSection = async () => {
           ) : (
             blogPosts?.map((post: any) => (
               <div
-                key={post.id}
+                key={post._id}
                 className="bg-white p-6 shadow-md rounded-lg hover:shadow-lg transition duration-300"
               >
                 <Image
@@ -31,7 +30,11 @@ const BlogSection = async () => {
                 <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{post.description}</p>
+                <p className="text-gray-600 mb-4">
+                  {post.description.length > 20
+                    ? `${post.description.slice(0, 150)}...`
+                    : post.description}
+                </p>{" "}
                 <a
                   href={post.link}
                   className="inline-block text-blue-500 font-semibold hover:text-blue-700"

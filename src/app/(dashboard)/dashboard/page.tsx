@@ -21,13 +21,16 @@ const AddBlog = () => {
     console.log("Form data submitted:", formData);
 
     try {
-      const response = await fetch("http://localhost:5000/blogs", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData), // Send the form data as JSON
-      });
+      const response = await fetch(
+        "https://protfolio-web-server-orcin.vercel.app/blogs",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData), // Send the form data as JSON
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to submit blog post");

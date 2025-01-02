@@ -2,35 +2,41 @@ import React from "react";
 
 const education = [
   {
-    degree: "Bachelor of Computer Science",
-    institution: "University of Technology",
-    year: "2019 - 2023",
+    degree:
+      " BSS Studying Political Science. Passion about computer science and engineering ",
+    institution: "National University",
+    year: "2021 - 2026",
   },
   {
     degree: "Higher Secondary Certificate",
-    institution: "City College",
-    year: "2017 - 2019",
+    institution: "A.B.C.D. College,Chowjacha,Jessore",
+    year: "2018 - 2020",
+  },
+  {
+    degree: "Secondary School Certificate",
+    institution: "Patibila H.S.A High School,Chowjacha,Jessore",
+    year: "2016 - 2017",
   },
 ];
 
-const certifications = [
-  { title: "Full-Stack Web Development", provider: "Coursera", year: "2023" },
-  { title: "React & Redux Mastery", provider: "Udemy", year: "2022" },
-  { title: "MongoDB Essentials", provider: "MongoDB University", year: "2021" },
-];
+// const certifications = [
+//   { title: "Full-Stack Web Development", provider: "Programing Hero", year: "2023" },
+//   { title: "React & Redux Mastery", provider: "Udemy", year: "2022" },
+//   { title: "MongoDB Essentials", provider: "MongoDB University", year: "2021" },
+// ];
 
-const workExperience = [
-  {
-    role: "Frontend Developer",
-    company: "Tech Solutions Inc.",
-    year: "2023 - Present",
-  },
-  {
-    role: "Web Development Intern",
-    company: "Startup Hub",
-    year: "2022 - 2023",
-  },
-];
+// const workExperience = [
+//   {
+//     role: "Frontend Developer",
+//     company: "Tech Solutions Inc.",
+//     year: "2023 - Present",
+//   },
+//   {
+//     role: "Web Development Intern",
+//     company: "Startup Hub",
+//     year: "2022 - 2023",
+//   },
+// ];
 
 const Qualification = () => {
   return (
@@ -60,7 +66,7 @@ const Qualification = () => {
         </div>
 
         {/* Certification Section */}
-        <div className="mb-12">
+        {/* <div className="mb-12">
           <h3 className="text-2xl font-semibold  mb-6">Certifications</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {certifications.map((cert, index) => (
@@ -76,10 +82,10 @@ const Qualification = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Work Experience Section */}
-        <div>
+        {/* <div>
           <h3 className="text-2xl font-semibold  mb-6">Work Experience</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {workExperience.map((work, index) => (
@@ -95,7 +101,7 @@ const Qualification = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

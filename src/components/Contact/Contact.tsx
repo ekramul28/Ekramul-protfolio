@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React, { useState } from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-
+import { MdOutlinePhone, MdOutlineMessage, MdLocationOn } from "react-icons/md";
 const ContactMe: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -57,18 +56,18 @@ const ContactMe: React.FC = () => {
           <div className="space-y-6">
             {/* Phone */}
             <div className="flex items-center gap-4">
-              <FaPhone className="text-blue-500 text-3xl" />
-              <span className="text-xl ">+1 234 567 890</span>
+              <MdOutlinePhone className="text-blue-500 text-3xl" />
+              <span className="text-xl ">+8801762477828</span>
             </div>
             {/* Email */}
             <div className="flex items-center gap-4">
-              <FaEnvelope className="text-blue-500 text-3xl" />
-              <span className="text-xl ">example@email.com</span>
+              <MdOutlineMessage className="text-blue-500 text-3xl" />
+              <span className="text-xl ">mdekramulhassan168@gmail.com</span>
             </div>
             {/* Location */}
             <div className="flex items-center gap-4">
-              <FaMapMarkerAlt className="text-blue-500 text-3xl" />
-              <span className="text-xl ">New York, USA</span>
+              <MdLocationOn className="text-blue-500 text-3xl" />
+              <span className="text-xl ">Dhaka,Bangladesh</span>
             </div>
           </div>
         </div>
