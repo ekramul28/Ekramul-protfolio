@@ -2,7 +2,10 @@
 export async function fetchProjects() {
   try {
     const res = await fetch(
-      "https://protfolio-web-server-orcin.vercel.app/projects"
+      "https://protfolio-web-server-liart.vercel.app/projects",
+      {
+        cache: "no-store", // Avoid caching for always fresh data
+      }
     );
 
     if (!res.ok) {
@@ -14,5 +17,22 @@ export async function fetchProjects() {
   } catch (error) {
     console.error("Error fetching projects:", error);
     return []; // Return an empty array as a fallback
+  }
+}
+export async function fetchSingleProjects(id: string) {
+  try {
+    const res = await fetch(
+      `https://protfolio-web-server-liart.vercel.app/projects/${id}`,
+      {
+        cache: "no-store",
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch project data");
+    }
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 }

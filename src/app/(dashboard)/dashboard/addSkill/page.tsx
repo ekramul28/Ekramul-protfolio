@@ -28,7 +28,7 @@ const AddSkill = () => {
       setLoading(true);
 
       const response = await fetch(
-        "https://protfolio-web-server-orcin.vercel.app/skills",
+        "https://protfolio-web-server-liart.vercel.app/skills",
         {
           method: "POST",
           headers: {
@@ -72,7 +72,7 @@ const AddSkill = () => {
       setLoading2(true);
 
       const response = await fetch(
-        "https://protfolio-web-server-orcin.vercel.app/level",
+        "https://protfolio-web-server-liart.vercel.app/level",
         {
           method: "POST",
           headers: {

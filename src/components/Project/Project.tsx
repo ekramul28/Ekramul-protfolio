@@ -6,7 +6,6 @@ import { fetchProjects } from "@/utils/api/projectApi";
 
 const Projects = async () => {
   const projects = await fetchProjects();
-  console.log(projects);
   return (
     <section id="project" className="w-full py-16">
       <div className="container mx-auto px-6">
@@ -90,13 +89,12 @@ const Projects = async () => {
                       Watch Video
                     </a>
                   )}
-                  {project?.links?.details && (
-                    <Link href={project.links.details}>
-                      <p className="px-4 py-2 bg-teal-500 text-white text-sm font-medium rounded hover:bg-teal-600">
-                        Details
-                      </p>
-                    </Link>
-                  )}
+
+                  <Link href={`/projectDetails/${project._id}`}>
+                    <p className="px-4 py-2 bg-teal-500 text-white text-sm font-medium rounded hover:bg-teal-600">
+                      Details
+                    </p>
+                  </Link>
                 </div>
               </div>
             </div>

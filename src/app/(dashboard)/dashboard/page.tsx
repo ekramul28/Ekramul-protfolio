@@ -22,7 +22,7 @@ const AddBlog = () => {
 
     try {
       const response = await fetch(
-        "https://protfolio-web-server-orcin.vercel.app/blogs",
+        "https://protfolio-web-server-liart.vercel.app/blogs",
         {
           method: "POST",
           headers: {

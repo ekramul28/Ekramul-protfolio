@@ -1,7 +1,10 @@
 export const fetchSkillsLevel2 = async () => {
   try {
     const level2Res = await fetch(
-      "https://protfolio-web-server-orcin.vercel.app/level"
+      "https://protfolio-web-server-liart.vercel.app/level",
+      {
+        cache: "no-store", // Avoid caching for always fresh data
+      }
     );
     console.log("level2", level2Res);
     if (!level2Res.ok) {
