@@ -13,7 +13,7 @@ export default function DashboardLayout({
       </div>
 
       <div className="col-span-8">
-        <main className="px-4 h-screen">{children}</main>
+        <main>{children}</main>
       </div>
     </div>
   );
