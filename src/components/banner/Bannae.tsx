@@ -1,5 +1,3 @@
-// components/Banner.tsx
-
 import React from "react";
 import {
   FaFacebookF,
@@ -12,12 +10,13 @@ import { IoSend } from "react-icons/io5";
 
 const Banner: React.FC = () => {
   return (
-    <section id="banner" className="w-full py-16 mt-24  relative">
-      {/* SVG Background */}
-
-      <div className="px-6 flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
+    <section
+      id="banner"
+      className="w-full py:6 md:py-16 mt-28 md:mt-24 relative "
+    >
+      <div className="grid grid-cols-1 md:grid-cols-8 gap-8 px-6 items-center">
         {/* Left Side: Social Links */}
-        <div className="flex flex-col items-center md:items-start space-y-4">
+        <div className="col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-start space-y-4">
           <a
             href="https://github.com/ekramul28"
             target="_blank"
@@ -38,8 +37,9 @@ const Banner: React.FC = () => {
             href="https://www.facebook.com/ekramulhassan28"
             target="_blank"
             rel="noopener noreferrer"
+            className="hover:text-blue-600"
           >
-            <FaFacebookF size={20} className=" hover:text-blue-600" />
+            <FaFacebookF size={20} />
           </a>
           <a
             href="https://twitter.com/@ekramul_28"
@@ -53,32 +53,16 @@ const Banner: React.FC = () => {
             href="https://instagram.com/ekramul_28"
             target="_blank"
             rel="noopener noreferrer"
+            className="hover:text-blue-500"
           >
-            <FaInstagram size={20} className=" hover:text-blue-500" />
-          </a>
-        </div>
-
-        {/* Middle Side: About Me */}
-        <div className="text-center md:text-left max-w-md z-10">
-          <h2 className="text-3xl font-bold mb-4">Hi, Im Ekramul Haque</h2>
-          <p className="text-lg mb-6">
-            I am a passionate and self-taught web developer with a strong
-            commitment to continuous learning and improvement. Over the years,
-            Ive honed my skills in both frontend and backend development.
-          </p>
-          <a
-            href="#contact-me"
-            className="px-6 py-3 w-44 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300 flex items-center space-x-2"
-          >
-            <span>Contact Me</span>
-            <IoSend size={16} />
+            <FaInstagram size={20} />
           </a>
         </div>
 
         {/* Right Side: Profile Image */}
-        <div className="flex justify-center md:justify-end">
+        <div className="col-span-2 md:col-span-3 lg:col-span-2 flex justify-end md:order-3 ">
           <svg
-            className="w-full h-full"
+            className="w-40 h-40 md:w-full md:h-full"
             viewBox="0 0 200 187"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -106,6 +90,23 @@ const Banner: React.FC = () => {
               />
             </g>
           </svg>
+        </div>
+
+        {/* Middle Side: About Me */}
+        <div className="col-span-4 text-start md:text-left max-w-md ">
+          <h2 className="text-3xl font-bold mb-4">Hi, I’m Ekramul Haque</h2>
+          <p className="text-lg mb-6">
+            I am a passionate and self-taught web developer with a strong
+            commitment to continuous learning and improvement. Over the years,
+            I’ve honed my skills in both frontend and backend development.
+          </p>
+          <a
+            href="#contact-me"
+            className="px-6 py-3 w-44 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300 flex items-center space-x-2"
+          >
+            <span>Contact Me</span>
+            <IoSend size={16} />
+          </a>
         </div>
       </div>
     </section>

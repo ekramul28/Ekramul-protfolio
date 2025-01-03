@@ -67,24 +67,20 @@ const Navbar: React.FC = () => {
       } z-50`}
     >
       <Container>
-        <div className="px-4  flex items-center justify-between ">
+        <div className="px-4  flex  items-center justify-between ">
           {/* Logo/Brand */}
-          <div className="text-2xl font-bold">
-            <Link href="/">Ekramul Portfolio</Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-white">
-              <FaBars className="w-6 h-6" />
-            </button>
+          <div className="md:text-2xl font-bold flex">
+            <Link href="/">
+              <p className="flex ">
+                {" "}
+                Ekramul <span className="hidden md:block">Portfolio</span>
+              </p>
+            </Link>
           </div>
 
           {/* Dark Mode Toggle Button */}
           <div className="flex gap-2 justify-center items-center">
-            <nav
-              className={`md:flex space-x-6 ${isMenuOpen ? "block" : "hidden"}`}
-            >
+            <nav className={`flex space-x-6 hidden lg:block`}>
               {navLinks.map((link) => (
                 <button
                   key={link.href}
@@ -104,7 +100,7 @@ const Navbar: React.FC = () => {
                   }`}
                 >
                   <Link
-                    className="hover:text-blue-500 ml-3"
+                    className="hover:text-blue-500 ml-3 hidden lg:block"
                     href={"/dashboard"}
                   >
                     Dashboard
@@ -128,32 +124,64 @@ const Navbar: React.FC = () => {
             {isLoggedIn ? (
               <button
                 onClick={handleLogout}
-                className="px-4 py-3 w-[90px] bg-red-600 text-white font-semibold rounded-md hover:bg-red-500 transition duration-300"
+                className="px-4 py-2 md:py-3 md:w-[90px] text-sm bg-red-600 text-white font-semibold rounded-md hover:bg-red-500 transition duration-300"
               >
                 Logout
               </button>
             ) : (
               <Link href="/login">
-                <button className="px-6 py-3 w-full bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300">
+                <button className="px-6 py-2 md:py-3 w-full bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300">
                   Login
                 </button>
               </Link>
             )}
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden ml-4">
+              <button onClick={toggleMenu}>
+                <FaBars className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-gray-800 text-white p-4 space-y-4">
-            {navLinks.map((link) => (
+          <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <div className="bg-gray-800 text-white rounded-lg p-6 w-11/12 max-w-sm shadow-lg space-y-4">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => {
+                    scrollToSection(link.href); // Scroll to the section
+                    setIsMenuOpen(false); // Close the menu after navigation
+                  }}
+                  className="flex items-center justify-between w-full px-4 py-3 rounded-md bg-gray-700 hover:bg-gray-600 transition duration-300"
+                >
+                  <span>{link.label}</span>
+                  {/* Optional: Add an icon */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </button>
+              ))}
               <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="block hover:text-gray-400"
+                onClick={() => setIsMenuOpen(false)}
+                className="mt-4 w-full text-center text-gray-300 hover:text-white transition duration-300"
               >
-                {link.label}
+                Close Menu
               </button>
-            ))}
+            </div>
           </div>
         )}
       </Container>

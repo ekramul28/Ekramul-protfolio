@@ -46,10 +46,10 @@ const ContactMe: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-16 ">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+    <section id="contact" className="w-full py-6 md:py-16 ">
+      <div className="  px-6 flex flex-col md:flex-row items-center gap-4 md:gap-12">
         {/* Contact Information Section */}
-        <div className="flex flex-col items-center md:w-1/3 mb-8 md:mb-0">
+        <div className="flex flex-col items-center  mb-8 md:mb-0">
           <h2 className="text-3xl font-bold  text-center mb-8">
             Contact Information
           </h2>
@@ -57,17 +57,17 @@ const ContactMe: React.FC = () => {
             {/* Phone */}
             <div className="flex items-center gap-4">
               <MdOutlinePhone className="text-blue-500 text-3xl" />
-              <span className="text-xl ">+8801762477828</span>
+              <span className="md:text-xl ">+8801762477828</span>
             </div>
             {/* Email */}
             <div className="flex items-center gap-4">
               <MdOutlineMessage className="text-blue-500 text-3xl" />
-              <span className="text-xl ">mdekramulhassan168@gmail.com</span>
+              <span className="md:text-xl ">mdekramulhassan168@gmail.com</span>
             </div>
             {/* Location */}
             <div className="flex items-center gap-4">
               <MdLocationOn className="text-blue-500 text-3xl" />
-              <span className="text-xl ">Dhaka,Bangladesh</span>
+              <span className="md:text-xl ">Dhaka,Bangladesh</span>
             </div>
           </div>
         </div>

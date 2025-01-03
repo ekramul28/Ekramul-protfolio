@@ -12,7 +12,7 @@ const BlogSection = async () => {
           Latest Blog Posts
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.length == 0 ? (
+          {blogPosts?.length == 0 ? (
             <h1 className="text-center">No Blog added</h1>
           ) : (
             blogPosts?.map((post: any) => (

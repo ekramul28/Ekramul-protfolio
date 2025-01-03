@@ -1,10 +1,7 @@
 export const fetchBlog = async () => {
   try {
     const blogRes = await fetch(
-      "https://protfolio-web-server-liart.vercel.app/blogs",
-      {
-        cache: "no-store", // Avoid caching for always fresh data
-      }
+      "https://protfolio-web-server-liart.vercel.app/blogs"
     );
     if (!blogRes.ok) {
       throw new Error(`HTTP error! status: ${blogRes.status}`);

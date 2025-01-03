@@ -3,11 +3,11 @@ import React from "react";
 
 const About = () => {
   return (
-    <section id="about" className="w-full py-16 ">
+    <section id="about" className="w-full py-10 md:py-16 ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-6">
         {/* Left Side: Image */}
         <div className="flex justify-center">
-          <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
+          <div className="relative w-60 h-60  md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
             <Image
               height={200}
               width={200}
@@ -21,7 +21,7 @@ const About = () => {
         {/* Right Side: About Text */}
         <div className="space-y-6 text-center md:text-left">
           <h2 className="text-3xl font-bold ">About Me</h2>
-          <p className="text-lg ">
+          <p className="md:text-lg ">
             My name is <strong>Ekramul</strong>. I am a professional and
             enthusiastic programmer in my daily life. I am a quick learner with
             a self-learning attitude. I love to learn and explore new
@@ -32,7 +32,7 @@ const About = () => {
             any kind of job opportunity that suits my skills and interests.
           </p>
           {/* Buttons */}
-          <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+          <div className="flex flex-row gap-4 justify-center md:justify-start">
             <a
               href="https://drive.usercontent.google.com/u/0/uc?id=1ZaRd2LhVl27sAWjnsAuYO8PcLI9PSv7B&export=download" // Update with your CV link
               download

@@ -40,7 +40,7 @@ const education = [
 
 const Qualification = () => {
   return (
-    <section id="qualification" className="w-full py-16 ">
+    <section id="qualification" className="w-full mt-12 md:py-16 ">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl font-bold  text-center mb-8">
           My Qualifications

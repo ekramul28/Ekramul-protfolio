@@ -12,7 +12,7 @@ const SideBar = () => {
 
   return (
     <div>
-      <div className="sm:hidden   ">
+      <div className="sm:hidden ">
         <div className="top-4 right-4 z-50 fixed">
           <button onClick={toggleSidebar} className="p-2 text-gray-700">
             <svg
