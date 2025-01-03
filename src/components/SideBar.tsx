@@ -12,8 +12,8 @@ const SideBar = () => {
 
   return (
     <div>
-      <div className="sm:hidden ">
-        <div className="top-4 right-4 z-50 fixed">
+      <div className="sm:hidden">
+        <div className="top-4 md:sm right-4 z-50 fixed">
           <button onClick={toggleSidebar} className="p-2 text-gray-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ const SideBar = () => {
         } fixed inset-y-0 left-0 z-40 transform bg-white transition-transform duration-300 ease-in-out sm:static sm:translate-x-0 sm:flex sm:h-screen sm:flex-col sm:justify-between border-e`}
       >
         <div className="px-4 py-6">
-          <span className=" hidden md:block h-10 w-32 place-content-center rounded-lg  text-xs text-gray-600">
+          <span className=" block h-10 w-32 place-content-center rounded-lg  text-xs text-gray-600">
             <div className="h-12  mt-4 ml-3">
               <h1 className="h-12 w-12 font-bold text-2xl">
                 <Link href={"/"}>Ekramul</Link>
@@ -93,7 +93,7 @@ const SideBar = () => {
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black opacity-50 sm:hidden"
+          className="fixed inset-0 z-30 bg-black opacity-50 sm:hidden "
           onClick={toggleSidebar}
         />
       )}

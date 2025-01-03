@@ -20,9 +20,7 @@ const NavbarDetailsPage: React.FC = () => {
   // Toggle dark mode
 
   return (
-    <header
-      className={`w-full py-4 fixed top-0 left-0 bg-[#ededed] z-50 shadow-md`}
-    >
+    <header className={`w-full py-4  bg-[#ededed] z-50 shadow-md`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold">
@@ -30,7 +28,7 @@ const NavbarDetailsPage: React.FC = () => {
         </div>
 
         {/* Right Section */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 hidden md:block">
           {/* Dark Mode Toggle */}
 
           {/* Login/Logout Button */}

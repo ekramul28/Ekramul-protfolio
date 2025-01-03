@@ -91,13 +91,13 @@ const AddProject = () => {
   };
 
   return (
-    <div className=" bg-gray-50 rounded-lg shadow-lg mt-8">
-      <h1 className="text-2xl font-bold pt-4 text-gray-800 text-center">
+    <div className=" bg-gray-50 rounded-lg shadow-lg mt-2">
+      {/* <h1 className="text-2xl font-bold pt-4 text-gray-800 text-center">
         Add a New Project
       </h1>
       <p className="text-gray-600 text-center mt-2 mb-6">
         Share details about your project to showcase your work.
-      </p>
+      </p> */}
       <form
         onSubmit={handleSubmit}
         className=" bg-white p-4 rounded-lg shadow-md"

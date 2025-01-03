@@ -102,7 +102,7 @@ const AddSkill = () => {
   };
 
   return (
-    <div>
+    <div className="md:flex gap-3">
       <div className="  p-6 bg-gray-50 rounded-lg shadow-lg mt-8">
         <h1 className="text-2xl font-bold text-gray-800 text-center">
           Add Level1 Skill
