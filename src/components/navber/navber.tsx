@@ -176,29 +176,31 @@ const Navbar: React.FC = () => {
                 </button>
               ))}
 
-              <Link
-                href={"/dashboard"}
-                onClick={() => {
-                  setIsMenuOpen(false); // Close the menu after navigation
-                }}
-                className="flex items-center justify-between w-full px-4 py-3 rounded-md bg-gray-700 hover:bg-gray-600 transition duration-300"
-              >
-                Dashboard
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-5 h-5"
+              {isLoggedIn && (
+                <Link
+                  href={"/dashboard"}
+                  onClick={() => {
+                    setIsMenuOpen(false); // Close the menu after navigation
+                  }}
+                  className="flex items-center justify-between w-full px-4 py-3 rounded-md bg-gray-700 hover:bg-gray-600 transition duration-300"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
+                  Dashboard
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
+              )}
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-4 w-full text-center text-gray-300 hover:text-white transition duration-300"
