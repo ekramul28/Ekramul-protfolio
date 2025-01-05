@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { fetchBlog } from "@/utils/api/blogApi";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const BlogSection = async () => {
@@ -43,12 +44,12 @@ const BlogSection = async () => {
                   }}
                 />
 
-                <a
-                  href={post.link}
+                <Link
+                  href={`Blog/${post._id}`}
                   className="inline-block text-blue-500 font-semibold hover:text-blue-700"
                 >
                   Read More
-                </a>
+                </Link>
               </div>
             ))
           )}
