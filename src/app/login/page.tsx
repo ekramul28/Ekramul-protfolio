@@ -23,7 +23,7 @@ const LoginPage: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://protfolio-web-server-liart.vercel.app/login",
+        "https://protfolio-server-dun.vercel.app/login",
         {
           method: "POST",
           headers: {
