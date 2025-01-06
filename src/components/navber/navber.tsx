@@ -8,7 +8,6 @@ import Container from "../container/Container";
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Apply dark mode to the body when isDarkMode changes
   useEffect(() => {
@@ -18,16 +17,6 @@ const Navbar: React.FC = () => {
       document.body.classList.remove("dark");
     }
   }, [isDarkMode]);
-
-  // Check if the user is logged in by checking for a token in localStorage
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsLoggedIn(true); // User is logged in
-    } else {
-      setIsLoggedIn(false); // User is not logged in
-    }
-  }, []);
 
   // Toggle dark mode
   const toggleDarkMode = () => {
@@ -52,12 +41,6 @@ const Navbar: React.FC = () => {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  // Handle logout by removing the token from localStorage
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false); // Update the login status
   };
 
   return (
@@ -91,23 +74,6 @@ const Navbar: React.FC = () => {
                 </button>
               ))}
             </nav>
-            {/* Dashboard */}
-            {isLoggedIn && (
-              <div className="flex gap-3 justify-center items-center">
-                <nav
-                  className={`md:flex space-x-6 ${
-                    isMenuOpen ? "block" : "hidden"
-                  }`}
-                >
-                  <Link
-                    className="hover:text-blue-500 ml-3 hidden lg:block"
-                    href={"/dashboard"}
-                  >
-                    Dashboard
-                  </Link>
-                </nav>
-              </div>
-            )}
 
             <button
               onClick={toggleDarkMode}
@@ -120,21 +86,6 @@ const Navbar: React.FC = () => {
               )}
             </button>
 
-            {/* Login/Logout Button */}
-            {isLoggedIn ? (
-              <button
-                onClick={handleLogout}
-                className="px-4 py-2 md:py-3 md:w-[90px] text-sm bg-red-600 text-white font-semibold rounded-md hover:bg-red-500 transition duration-300"
-              >
-                Logout
-              </button>
-            ) : (
-              <Link href="/login">
-                <button className="px-6 py-2 md:py-3 w-full bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300">
-                  Login
-                </button>
-              </Link>
-            )}
             {/* Mobile Menu Button */}
             <div className="lg:hidden ml-4">
               <button onClick={toggleMenu}>
@@ -176,31 +127,6 @@ const Navbar: React.FC = () => {
                 </button>
               ))}
 
-              {isLoggedIn && (
-                <Link
-                  href={"/dashboard"}
-                  onClick={() => {
-                    setIsMenuOpen(false); // Close the menu after navigation
-                  }}
-                  className="flex items-center justify-between w-full px-4 py-3 rounded-md bg-gray-700 hover:bg-gray-600 transition duration-300"
-                >
-                  Dashboard
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </Link>
-              )}
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-4 w-full text-center text-gray-300 hover:text-white transition duration-300"
