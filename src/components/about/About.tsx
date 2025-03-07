@@ -34,14 +34,14 @@ const About = () => {
           {/* Buttons */}
           <div className="flex flex-row gap-4 justify-center md:justify-start">
             <a
-              href="https://drive.usercontent.google.com/u/0/uc?id=1ZaRd2LhVl27sAWjnsAuYO8PcLI9PSv7B&export=download" // Update with your CV link
+              href="https://drive.usercontent.google.com/u/0/uc?id=1RRW7n2f_pbiwk2DiUxAVexuB_BNmuoFO&export=download" // Update with your CV link
               download
               className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300"
             >
               Download CV
             </a>
             <a
-              href="https://drive.google.com/file/d/1ZaRd2LhVl27sAWjnsAuYO8PcLI9PSv7B/view?usp=sharing" // Update with your CV viewing link
+              href="https://drive.google.com/file/d/1RRW7n2f_pbiwk2DiUxAVexuB_BNmuoFO/view?usp=sharing" // Update with your CV viewing link
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-md hover:bg-blue-600 hover:text-white transition duration-300"
