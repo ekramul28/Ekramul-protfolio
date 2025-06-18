@@ -1,113 +1,289 @@
+"use client";
 import React from "react";
 import {
-  FaFacebookF,
   FaGithub,
-  FaInstagram,
   FaLinkedin,
   FaTwitter,
+  FaInstagram,
+  FaDiscord,
+  FaMedium,
 } from "react-icons/fa";
-import { IoSend } from "react-icons/io5";
+import { HiOutlineMail, HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 const Banner: React.FC = () => {
+  // Modern gradient color scheme
+  const colors = {
+    primary: "#8B5CF6", // Vibrant purple
+    secondary: "#EC4899", // Pink
+    gradient: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
+    dark: "#1F2937", // Dark gray
+    light: "#F9FAFB", // Light gray
+    accent: "#FCD34D", // Golden yellow
+    text: "#374151", // Gray-700
+  };
+
+  // Animation configurations
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
+  const socialIcon = (delay: number) => ({
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: delay * 0.15,
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+    hover: {
+      y: -5,
+      color: colors.secondary,
+      transition: { duration: 0.2 },
+    },
+  });
+
+  const button = {
+    hover: {
+      y: -3,
+      scale: 1.02,
+      boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.4)",
+    },
+    tap: { scale: 0.98 },
+  };
+
+  const socialLinks = [
+    {
+      icon: <FaGithub size={22} />,
+      href: "https://github.com/ekramul28",
+      name: "GitHub",
+    },
+    {
+      icon: <FaLinkedin size={22} />,
+      href: "https://linkedin.com/in/ekramul57",
+      name: "LinkedIn",
+    },
+    {
+      icon: <FaTwitter size={22} />,
+      href: "https://twitter.com/@ekramul_28",
+      name: "Twitter",
+    },
+    {
+      icon: <FaInstagram size={22} />,
+      href: "https://instagram.com/ekramul_28",
+      name: "Instagram",
+    },
+    {
+      icon: <FaDiscord size={22} />,
+      href: "https://discord.com",
+      name: "Discord",
+    },
+    {
+      icon: <HiOutlineMail size={22} />,
+      href: "mailto:ekramul@example.com",
+      name: "Email",
+    },
+  ];
+
   return (
     <section
       id="banner"
-      className="w-full py:6 md:py-16 mt-28 md:mt-24 relative "
+      className="w-full py-16 md:py-24 relative overflow-hidden"
+      style={{ backgroundColor: colors.light }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-8 gap-8 px-6 items-center">
-        {/* Left Side: Social Links */}
-        <div className="col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-start space-y-4">
-          <a
-            href="https://github.com/ekramul28"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-500"
-          >
-            <FaGithub size={20} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/ekramul57"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-500"
-          >
-            <FaLinkedin size={20} />
-          </a>
-          <a
-            href="https://www.facebook.com/ekramulhassan28"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-600"
-          >
-            <FaFacebookF size={20} />
-          </a>
-          <a
-            href="https://twitter.com/@ekramul_28"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-500"
-          >
-            <FaTwitter size={20} />
-          </a>
-          <a
-            href="https://instagram.com/ekramul_28"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-500"
-          >
-            <FaInstagram size={20} />
-          </a>
-        </div>
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+      </div>
 
-        {/* Right Side: Profile Image */}
-        <div className="col-span-2 md:col-span-3 lg:col-span-2 flex justify-end md:order-3 ">
-          <svg
-            className="w-40 h-40 md:w-full md:h-full"
-            viewBox="0 0 200 187"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Social Links - Left Side */}
+          <motion.div
+            className="col-span-1 lg:col-span-2 flex flex-col items-center lg:items-start space-y-8"
+            variants={container}
           >
-            <mask id="mask0" mask-type="alpha">
-              <path
-                d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-              />
-            </mask>
-            <g mask="url(#mask0)">
-              <path
-                d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-              />
-              <image
-                className="home__blob-img"
-                x="-79"
-                y="-46"
-                xlinkHref="/img/Pro1.jpeg" // Update this path to your profile image path
-              />
-            </g>
-          </svg>
-        </div>
+            {socialLinks.map((link, i) => (
+              <motion.a
+                key={i}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center group relative"
+                custom={i}
+                variants={socialIcon(i)}
+                whileHover="hover"
+                aria-label={link.name}
+              >
+                <span
+                  className="absolute left-full ml-4 px-3 py-1 text-sm font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap"
+                  style={{
+                    backgroundColor: colors.primary,
+                    color: colors.light,
+                  }}
+                >
+                  {link.name}
+                </span>
+                <span
+                  className="p-2 rounded-full transition-colors duration-300"
+                  style={{
+                    color: colors.dark,
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  {link.icon}
+                </span>
+              </motion.a>
+            ))}
+          </motion.div>
 
-        {/* Middle Side: About Me */}
-        <div className="col-span-4 text-start md:text-left max-w-md ">
-          <h2 className="text-3xl font-bold mb-4">Hi, I’m Ekramul Haque</h2>
-          <p className="text-lg mb-6">
-            I am a passionate and self-taught web developer with a strong
-            commitment to continuous learning and improvement. Over the years,
-            I’ve honed my skills in both frontend and backend development.
-          </p>
-          <a
-            href="#contact-me"
-            className="px-6 py-3 w-44 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300 flex items-center space-x-2"
+          {/* Content - Middle */}
+          <motion.div
+            className="col-span-1 lg:col-span-7 text-center lg:text-left"
+            variants={container}
           >
-            <span>Contact Me</span>
-            <IoSend size={16} />
-          </a>
-        </div>
+            <motion.div variants={item}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <span style={{ color: colors.text }}>Hi, I'm </span>
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: colors.gradient,
+                    WebkitBackgroundClip: "text",
+                  }}
+                >
+                  Ekramul Haque
+                </span>
+              </h1>
+              <h2
+                className="text-xl md:text-2xl mb-8 font-medium"
+                style={{ color: colors.primary }}
+              >
+                Full Stack Developer & UI Specialist
+              </h2>
+            </motion.div>
+
+            <motion.p
+              className="text-lg md:text-xl mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              variants={item}
+              style={{ color: colors.text }}
+            >
+              I craft high-performance web applications with cutting-edge
+              technologies and pixel-perfect interfaces that deliver exceptional
+              user experiences.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              variants={item}
+            >
+              <motion.a
+                href="#contact"
+                className="px-8 py-4 rounded-xl font-semibold flex items-center justify-center"
+                style={{
+                  background: colors.gradient,
+                  color: colors.light,
+                }}
+                whileHover="hover"
+                whileTap="tap"
+                variants={button}
+              >
+                Get In Touch
+                <HiOutlineArrowNarrowRight className="ml-2" size={20} />
+              </motion.a>
+
+              <motion.a
+                href="#projects"
+                className="px-8 py-4 rounded-xl font-semibold flex items-center justify-center border-2"
+                style={{
+                  borderColor: colors.primary,
+                  color: colors.primary,
+                }}
+                whileHover={{
+                  backgroundColor: colors.primary,
+                  color: colors.light,
+                  y: -3,
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                View My Work
+              </motion.a>
+            </motion.div>
+          </motion.div>
+
+          {/* Profile Image - Right Side */}
+          <motion.div
+            className="col-span-1 lg:col-span-3 flex justify-center lg:justify-end"
+            variants={item}
+          >
+            <div className="relative w-64 h-64 md:w-80 md:h-80">
+              <motion.div
+                className="absolute inset-0 rounded-2xl overflow-hidden border-4"
+                style={{
+                  borderColor: colors.light,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+                }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{
+                  delay: 0.4,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                whileHover={{
+                  y: -5,
+                  boxShadow: "0 25px 50px -12px rgba(139, 92, 246, 0.25)",
+                }}
+              >
+                <img
+                  src="/img/Pro1.jpeg"
+                  alt="Ekramul Haque"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+              <motion.div
+                className="absolute -z-10 inset-0 rounded-2xl"
+                style={{
+                  background: colors.gradient,
+                  transform: "rotate(5deg)",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              />
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
