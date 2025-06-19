@@ -18,7 +18,7 @@ import { colors } from "@/utils/const&link/color";
 const Skills = () => {
   const [level1Skills, setLevel1Skills] = useState([]);
   const [level2Skills, setLevel2Skills] = useState([]);
-  const [user, setUser] = useState<any>(null);
+  const [setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   // Map skill categories to icons with gradient backgrounds
@@ -60,13 +60,6 @@ const Skills = () => {
     hover: {
       y: -10,
       boxShadow: "0 25px 50px -12px rgba(139, 92, 246, 0.25)",
-    },
-  };
-
-  const progressVariants = {
-    hidden: { width: 0 },
-    visible: {
-      width: "100%",
     },
   };
 

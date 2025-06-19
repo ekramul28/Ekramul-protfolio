@@ -6,7 +6,6 @@ import {
   FaTwitter,
   FaInstagram,
   FaDiscord,
-  FaMedium,
 } from "react-icons/fa";
 import { HiOutlineMail, HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { motion } from "framer-motion";
@@ -32,25 +31,6 @@ const Banner: React.FC = () => {
       y: 0,
     },
   };
-
-  const socialIcon = (delay: number) => ({
-    hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: delay * 0.15,
-        duration: 0.8,
-        type: "spring",
-        stiffness: 100,
-      },
-    },
-    hover: {
-      y: -5,
-      color: colors.secondary,
-      transition: { duration: 0.2 },
-    },
-  });
 
   const button = {
     hover: {
@@ -164,7 +144,7 @@ const Banner: React.FC = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span style={{ color: colors.text }}>Hi, I'm </span>
+                <span style={{ color: colors.text }}>Hi, I&apos;m </span>
                 <span
                   className="bg-clip-text text-transparent"
                   style={{

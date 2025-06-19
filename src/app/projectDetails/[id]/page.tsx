@@ -11,10 +11,9 @@ import {
   FaCode,
   FaServer,
   FaArrowLeft,
-  FaCalendar,
-  FaUser,
 } from "react-icons/fa";
 import Link from "next/link";
+import { colors } from "@/utils/const&link/color";
 
 // interface ProjectDetailsProps {
 //   params: {
@@ -26,17 +25,6 @@ const ProjectDetails = ({ params }: any) => {
   const { id } = params;
   const [project, setProject] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-
-  // Modern gradient color scheme
-  const colors = {
-    primary: "#8B5CF6", // Vibrant purple
-    secondary: "#EC4899", // Pink
-    gradient: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
-    dark: "#1F2937", // Dark gray
-    light: "#F9FAFB", // Light gray
-    accent: "#FCD34D", // Golden yellow
-    text: "#374151", // Gray-700
-  };
 
   // Animation configurations
   const container = {

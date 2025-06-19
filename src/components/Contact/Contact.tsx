@@ -87,9 +87,11 @@ const ContactMe: React.FC = () => {
       } else {
         setStatusMessage("Failed to send message. Please try again later.");
       }
-    } catch (error) {
-      setStatusMessage("Error sending message. Please check your connection.");
-    } finally {
+    } catch (e) {
+      console.log(e)
+      setStatusMessage(
+        "Error sending message. Please check your connection.",
+      } finally {
       setIsSubmitting(false);
     }
   };
