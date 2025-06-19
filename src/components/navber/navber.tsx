@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaMoon, FaBars } from "react-icons/fa";
+import { FaMoon, FaBars, FaTimes } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "../container/Container";
@@ -10,39 +10,65 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   // Apply dark mode to the body when isDarkMode changes
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("dark");
+      document.documentElement.classList.add("dark");
     } else {
       document.body.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
     }
   }, [isDarkMode]);
 
-  // Handle scroll effect
+  // Handle scroll effect and active section
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+
+      // Update active section
+      const sections = document.querySelectorAll("section[id]");
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          setActiveSection(section.id);
+        }
+      });
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
+    localStorage.setItem("darkMode", String(!isDarkMode));
   };
+
+  // Check for saved theme preference
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode");
+    if (savedMode) {
+      setIsDarkMode(savedMode === "true");
+    } else {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      setIsDarkMode(prefersDark);
+    }
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Define the navigation links
   const navLinks = [
     { href: "home", label: "Home" },
     { href: "about", label: "About" },
     { href: "skills", label: "Skills" },
     { href: "qualification", label: "Qualification" },
     { href: "projects", label: "Projects" },
-    { href: "contact-me", label: "Contact Me" },
+    { href: "contact-me", label: "Contact" },
     { href: "blog", label: "Blog" },
   ];
 
@@ -50,6 +76,7 @@ const Navbar: React.FC = () => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(id);
     }
   };
 
@@ -61,39 +88,39 @@ const Navbar: React.FC = () => {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
 
   const mobileMenuVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
+    hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
-      scale: 1,
+      y: 0,
       transition: {
-        duration: 0.2,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
     exit: {
       opacity: 0,
-      scale: 0.95,
+      y: -20,
       transition: {
-        duration: 0.15,
+        duration: 0.2,
         ease: "easeIn",
       },
     },
   };
 
   const linkItemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: -10 },
     visible: (i: number) => ({
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
-        delay: 0.1 * i,
-        duration: 0.3,
+        delay: 0.05 * i,
+        duration: 0.4,
       },
     }),
   };
@@ -103,13 +130,11 @@ const Navbar: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: "spring" }}
-      className={`w-full py-4 fixed top-0 left-0 mx-auto ${
-        isDarkMode ? "bg-black" : "bg-[#f7f7f7]"
-      } z-50 ${
-        isScrolled
-          ? "shadow-lg backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
-          : ""
-      }`}
+      className={`w-full py-3 fixed top-0 left-0 mx-auto z-50 transition-all duration-300 ${
+        isDarkMode
+          ? "bg-gray-900/80 dark:bg-opacity-80"
+          : "bg-white/80 bg-opacity-80"
+      } ${isScrolled ? "shadow-sm backdrop-blur-md" : ""}`}
     >
       <Container>
         <motion.div
@@ -122,19 +147,21 @@ const Navbar: React.FC = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="md:text-2xl font-bold flex"
+            className="text-xl font-bold flex"
           >
-            <Link href="/">
-              <p className="flex">
-                {" "}
-                Ekramul <span className="hidden md:block">Portfolio</span>
-              </p>
+            <Link href="/" className="flex items-center">
+              <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent font-extrabold">
+                Ekramul
+              </span>
+              <span className="hidden md:block ml-1 text-gray-700 dark:text-gray-300">
+                Portfolio
+              </span>
             </Link>
           </motion.div>
 
-          {/* Dark Mode Toggle Button */}
-          <div className="flex gap-2 justify-center items-center">
-            <nav className={`flex space-x-6 hidden lg:block`}>
+          {/* Desktop Navigation */}
+          <div className="flex items-center gap-4">
+            <nav className="hidden lg:flex items-center space-x-1">
               {navLinks.map((link, index) => (
                 <motion.button
                   key={link.href}
@@ -143,43 +170,59 @@ const Navbar: React.FC = () => {
                   initial="hidden"
                   animate="visible"
                   onClick={() => scrollToSection(link.href)}
-                  className="hover:text-blue-500 relative group"
-                  whileHover={{ scale: 1.05 }}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium relative transition-colors ${
+                    activeSection === link.href
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                  }`}
+                  whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {link.label}
-                  <motion.span
-                    className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"
-                    initial={{ width: 0 }}
-                    whileHover={{ width: "100%" }}
-                  />
+                  {activeSection === link.href && (
+                    <motion.span
+                      layoutId="activeIndicator"
+                      className="absolute left-1/2 -bottom-1 h-0.5 w-6 bg-blue-500 -translate-x-1/2 rounded-full"
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
+                    />
+                  )}
                 </motion.button>
               ))}
             </nav>
 
+            {/* Dark Mode Toggle */}
             <motion.button
               onClick={toggleDarkMode}
-              className="p-2 rounded-md hover:text-blue-500"
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Toggle dark mode"
             >
               {isDarkMode ? (
-                <IoSunnyOutline className="w-6 h-6" />
+                <IoSunnyOutline className="w-5 h-5 text-yellow-400" />
               ) : (
-                <FaMoon className="w-6 h-6" />
+                <FaMoon className="w-5 h-5 text-gray-600" />
               )}
             </motion.button>
 
             {/* Mobile Menu Button */}
-            <div className="lg:hidden ml-4">
-              <motion.button
-                onClick={toggleMenu}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FaBars className="w-6 h-6" />
-              </motion.button>
-            </div>
+            <motion.button
+              className="lg:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              onClick={toggleMenu}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <FaTimes className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              ) : (
+                <FaBars className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              )}
+            </motion.button>
           </div>
         </motion.div>
 
@@ -187,59 +230,94 @@ const Navbar: React.FC = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="lg:hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+              className="lg:hidden fixed inset-0 z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMenuOpen(false)}
             >
+              {/* Backdrop */}
+              <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+
+              {/* Menu Panel */}
               <motion.div
-                className="bg-gray-800 text-white rounded-lg p-6 w-11/12 max-w-sm shadow-lg space-y-4"
+                className="absolute top-0 right-0 h-full w-80 bg-white dark:bg-gray-900 shadow-xl"
                 variants={mobileMenuVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
                 onClick={(e) => e.stopPropagation()}
               >
-                {navLinks.map((link, index) => (
-                  <motion.button
-                    key={link.href}
-                    custom={index}
-                    variants={linkItemVariants}
-                    onClick={() => {
-                      scrollToSection(link.href);
-                      setIsMenuOpen(false);
-                    }}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-md bg-gray-700 hover:bg-gray-600 transition duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span>{link.label}</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2}
-                      stroke="currentColor"
-                      className="w-5 h-5"
+                <div className="p-6 h-full flex flex-col">
+                  <div className="flex justify-between items-center mb-8">
+                    <div className="text-xl font-bold">
+                      <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                        Menu
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setIsMenuOpen(false)}
+                      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </motion.button>
-                ))}
+                      <FaTimes className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                    </button>
+                  </div>
 
-                <motion.button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="mt-4 w-full text-center text-gray-300 hover:text-white transition duration-300"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Close Menu
-                </motion.button>
+                  <nav className="flex-1 space-y-2">
+                    {navLinks.map((link, index) => (
+                      <motion.button
+                        key={link.href}
+                        custom={index}
+                        variants={linkItemVariants}
+                        onClick={() => {
+                          scrollToSection(link.href);
+                          setIsMenuOpen(false);
+                        }}
+                        className={`w-full px-4 py-3 rounded-lg text-left flex items-center justify-between ${
+                          activeSection === link.href
+                            ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                            : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                        }`}
+                        whileHover={{ x: 5 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span>{link.label}</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2}
+                          stroke="currentColor"
+                          className="w-5 h-5"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                          />
+                        </svg>
+                      </motion.button>
+                    ))}
+                  </nav>
+
+                  <div className="mt-auto pt-6 border-t border-gray-200 dark:border-gray-800">
+                    <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+                      <span>Dark Mode</span>
+                      <button
+                        onClick={toggleDarkMode}
+                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                          isDarkMode ? "bg-blue-600" : "bg-gray-300"
+                        }`}
+                      >
+                        <span
+                          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                            isDarkMode ? "translate-x-6" : "translate-x-1"
+                          }`}
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           )}
