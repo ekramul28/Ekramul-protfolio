@@ -13,21 +13,11 @@ import {
   FaCode,
   FaServer,
 } from "react-icons/fa";
+import { colors } from "@/utils/const&link/color";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // Modern gradient color scheme
-  const colors = {
-    primary: "#8B5CF6", // Vibrant purple
-    secondary: "#EC4899", // Pink
-    gradient: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
-    dark: "#1F2937", // Dark gray
-    light: "#F9FAFB", // Light gray
-    accent: "#FCD34D", // Golden yellow
-    text: "#374151", // Gray-700
-  };
 
   // Animation configurations
   const container = {
@@ -101,7 +91,16 @@ const Projects = () => {
               className="text-4xl md:text-5xl font-bold text-center mb-8"
               style={{ color: colors.text }}
             >
-              My Projects
+              My
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: colors.gradient,
+                  WebkitBackgroundClip: "text",
+                }}
+              >
+                Projects
+              </span>
             </h2>
           </motion.div>
           <div className="flex justify-center items-center h-64">
@@ -134,10 +133,19 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
         >
           <h2
-            className="text-4xl md:text-5xl font-bold text-center mb-12"
+            className="text-4xl md:text-5xl font-bold text-center mb-8"
             style={{ color: colors.text }}
           >
-            My Projects
+            My
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: colors.gradient,
+                WebkitBackgroundClip: "text",
+              }}
+            >
+              Projects
+            </span>
           </h2>
         </motion.div>
 

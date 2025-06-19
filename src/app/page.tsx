@@ -5,7 +5,6 @@ import BlogSection from "@/components/blog/blog";
 import ContactMe from "@/components/Contact/Contact";
 import Container from "@/components/container/Container";
 import Footer from "@/components/Footer/Footer";
-import GoToTopButton from "@/components/GotoTop/GoToTop";
 import Navbar from "@/components/navber/navber";
 import Projects from "@/components/Project/Project";
 import Qualification from "@/components/Qualification/Qualification";
@@ -38,7 +37,6 @@ const Home = () => {
         <section id="qualification" className="scroll-mt-14">
           <Qualification />
         </section>
-        <GoToTopButton />
       </Container>
       <Footer />
     </div>

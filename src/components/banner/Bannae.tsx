@@ -10,19 +10,9 @@ import {
 } from "react-icons/fa";
 import { HiOutlineMail, HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { motion } from "framer-motion";
+import { colors } from "@/utils/const&link/color";
 
 const Banner: React.FC = () => {
-  // Modern gradient color scheme
-  const colors = {
-    primary: "#8B5CF6", // Vibrant purple
-    secondary: "#EC4899", // Pink
-    gradient: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
-    dark: "#1F2937", // Dark gray
-    // light: "#F9FAFB", // Light gray
-    accent: "#FCD34D", // Golden yellow
-    text: "#374151", // Gray-700
-  };
-
   // Animation configurations
   const container = {
     hidden: { opacity: 0 },
@@ -40,10 +30,6 @@ const Banner: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.16, 1, 0.3, 1],
-      },
     },
   };
 
@@ -98,12 +84,12 @@ const Banner: React.FC = () => {
     },
     {
       icon: <FaDiscord size={22} />,
-      href: "https://discord.com",
+      href: "https://discord.com/mdekramulhassan_25837",
       name: "Discord",
     },
     {
       icon: <HiOutlineMail size={22} />,
-      href: "mailto:ekramul@example.com",
+      href: "mailto:mdekramulhassan168@gmail.com",
       name: "Email",
     },
   ];
@@ -139,8 +125,9 @@ const Banner: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center group relative"
+                // variants={socialIcon(i)}
                 custom={i}
-                variants={socialIcon(i)}
+                animate="active"
                 whileHover="hover"
                 aria-label={link.name}
               >
@@ -172,7 +159,10 @@ const Banner: React.FC = () => {
             className="col-span-1 lg:col-span-7 text-center lg:text-left"
             variants={container}
           >
-            <motion.div variants={item}>
+            <motion.div
+              variants={item}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 <span style={{ color: colors.text }}>Hi, I'm </span>
                 <span
@@ -196,6 +186,7 @@ const Banner: React.FC = () => {
             <motion.p
               className="text-lg md:text-xl mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
               variants={item}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               style={{ color: colors.text }}
             >
               I craft high-performance web applications with cutting-edge
@@ -206,6 +197,7 @@ const Banner: React.FC = () => {
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               variants={item}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <motion.a
                 href="#contact"
@@ -245,6 +237,7 @@ const Banner: React.FC = () => {
           <motion.div
             className="col-span-1 lg:col-span-3 flex justify-center lg:justify-end"
             variants={item}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <motion.div

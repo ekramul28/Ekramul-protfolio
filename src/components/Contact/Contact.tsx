@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { motion } from "framer-motion";
 import { FiUser, FiMail, FiMessageSquare } from "react-icons/fi";
+import { colors } from "@/utils/const&link/color";
 
 const ContactMe: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,17 +18,6 @@ const ContactMe: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
-
-  // Modern gradient color scheme
-  const colors = {
-    primary: "#8B5CF6", // Vibrant purple
-    secondary: "#EC4899", // Pink
-    gradient: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
-    dark: "#1F2937", // Dark gray
-    light: "#F9FAFB", // Light gray
-    accent: "#FCD34D", // Golden yellow
-    text: "#374151", // Gray-700
-  };
 
   // Animation configurations
   const container = {
