@@ -9,8 +9,9 @@ import { FaArrowRight, FaCalendar, FaUser } from "react-icons/fa";
 import { colors } from "@/utils/const&link/color";
 
 const BlogSection = () => {
-  const [blogPosts, setBlogPosts] = useState([]);
+  const [blogPosts, setBlogPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Animation configurations
   const container = {
@@ -55,10 +56,22 @@ const BlogSection = () => {
   useEffect(() => {
     const loadBlogPosts = async () => {
       try {
+        setLoading(true);
+        setError(null);
         const posts = await fetchBlog();
-        setBlogPosts(posts);
+
+        // Ensure posts is an array and has valid data
+        if (Array.isArray(posts)) {
+          setBlogPosts(posts);
+        } else {
+          console.error("Invalid blog data format:", posts);
+          setBlogPosts([]);
+          setError("Invalid data format received");
+        }
       } catch (error) {
         console.error("Error loading blog posts:", error);
+        setError("Failed to load blog posts");
+        setBlogPosts([]);
       } finally {
         setLoading(false);
       }
@@ -92,6 +105,57 @@ const BlogSection = () => {
               style={{ borderColor: colors.primary }}
             ></div>
           </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section
+        className="w-full py-16 md:py-24 relative overflow-hidden"
+        style={{ backgroundColor: colors.light }}
+      >
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6"
+              style={{ color: colors.text }}
+            >
+              Latest{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: colors.gradient,
+                  WebkitBackgroundClip: "text",
+                }}
+              >
+                Blog Posts
+              </span>
+            </h2>
+            <div className="bg-white p-8 rounded-2xl shadow-lg max-w-md mx-auto">
+              <p className="text-lg mb-4" style={{ color: colors.text }}>
+                {error}
+              </p>
+              <motion.button
+                onClick={() => window.location.reload()}
+                className="px-6 py-3 rounded-xl font-semibold"
+                style={{
+                  background: colors.gradient,
+                  color: colors.light,
+                }}
+                whileHover={{ y: -2, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Try Again
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
       </section>
     );
@@ -145,7 +209,7 @@ const BlogSection = () => {
           initial="hidden"
           animate="visible"
         >
-          {blogPosts?.length === 0 ? (
+          {!blogPosts || blogPosts.length === 0 ? (
             <motion.div
               className="col-span-full text-center py-16"
               variants={item}
@@ -161,9 +225,9 @@ const BlogSection = () => {
               </p>
             </motion.div>
           ) : (
-            blogPosts?.map((post: any) => (
+            blogPosts.map((post: any) => (
               <motion.div
-                key={post._id}
+                key={post._id || post.id || Math.random()}
                 variants={cardVariants}
                 whileHover="hover"
                 className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
@@ -173,9 +237,13 @@ const BlogSection = () => {
                   <Image
                     height={200}
                     width={200}
-                    src={post.imageUrl}
-                    alt={post.title}
+                    src={post.imageUrl || post.image || "/img/default-blog.jpg"}
+                    alt={post.title || "Blog Post"}
                     className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/img/default-blog.jpg";
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -187,7 +255,7 @@ const BlogSection = () => {
                     style={{ color: colors.text }}
                     variants={item}
                   >
-                    {post.title}
+                    {post.title || "Untitled Post"}
                   </motion.h3>
 
                   <motion.div
@@ -197,7 +265,7 @@ const BlogSection = () => {
                       __html:
                         post?.content?.length > 150
                           ? `${post?.content?.slice(0, 150)}...`
-                          : post.content,
+                          : post.content || "No content available",
                     }}
                   />
 
@@ -209,17 +277,17 @@ const BlogSection = () => {
                     <div className="flex items-center gap-4 text-xs text-gray-500">
                       <div className="flex items-center gap-1">
                         <FaUser size={12} />
-                        <span>Admin</span>
+                        <span>{post.author || "Admin"}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <FaCalendar size={12} />
-                        <span>Recent</span>
+                        <span>{post.date || "Recent"}</span>
                       </div>
                     </div>
                   </motion.div>
 
                   {/* Read More Button */}
-                  <Link href={`Blog/${post._id}`}>
+                  <Link href={`/blog/${post._id || post.id}`}>
                     <motion.div
                       className="flex items-center gap-2 text-sm font-semibold cursor-pointer"
                       style={{ color: colors.primary }}

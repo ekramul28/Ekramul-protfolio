@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
     <footer
       id="footer"
       className="relative overflow-hidden"
-      style={{ backgroundColor: colors.dark }}
+      style={{ backgroundColor: colors.primary }}
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
           {/* Contact Info */}
           <motion.div variants={item}>
             <h3
-              className="text-2xl font-bold mb-6"
+              className="text-2xl font-bold mb-6 text-white"
               style={{ color: colors.light }}
             >
               Contact Info
